@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global DJ – Mitgliedschafts-Charta</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f5;
+    --grey-dark: #1a1a1a;
+    --grey-mid: #2e2e2e;
+    --grey-light: #888;
+    --grey-lighter: #bbb;
+    --accent: #ffffff;
+    --border: rgba(255,255,255,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  /* Hexagonal grid background */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+
+  /* Radial fade over grid */
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, var(--black) 80%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .hero-logo svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--white);
+    opacity: 0.6;
+  }
+
+  .hero-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 10vw, 96px);
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 7vw, 72px);
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    letter-spacing: 1px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--grey-light);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--grey-light), transparent);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    border-top: 1px solid var(--border);
+    padding: 64px 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .section-index {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-box {
+    border-left: 2px solid var(--white);
+    padding: 20px 28px;
+    margin-bottom: 40px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .intro-box p {
+    font-size: 17px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ── ROLE CARDS ── */
+  .roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .roles { grid-template-columns: 1fr; }
+  }
+
+  .role-card {
+    background: var(--grey-dark);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--white);
+  }
+
+  .role-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .role-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+
+  .role-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .role-desc {
+    font-size: 14px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── VALUES LIST ── */
+  .values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .value-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    background: var(--grey-dark);
+    padding: 24px 28px;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) {
+    .value-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .value-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--white);
+    padding-top: 2px;
+  }
+
+  .value-text {
+    font-size: 14px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── RULES ── */
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rule-item {
+    display: flex;
+    gap: 20px;
+    background: var(--grey-dark);
+    padding: 20px 28px;
+    align-items: flex-start;
+  }
+
+  .rule-check {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rule-check::after {
+    content: '✓';
+    font-size: 11px;
+    color: var(--white);
+    opacity: 0.5;
+  }
+
+  .rule-text {
+    font-size: 15px;
+    color: var(--grey-lighter);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .rule-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .step {
+    display: flex;
+    gap: 28px;
+    padding: 28px 0;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    background: var(--grey-dark);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content { padding-top: 8px; }
+
+  .step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .step-text {
+    font-size: 14px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── SIGN BOX ── */
+  .sign-box {
+    background: var(--grey-dark);
+    border-top: 2px solid var(--white);
+    padding: 40px 36px;
+    text-align: center;
+  }
+
+  .sign-box p {
+    font-size: 15px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 32px;
+  }
+
+  .sign-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .sign-fields { grid-template-columns: 1fr; }
+  }
+
+  .sign-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sign-field-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+  }
+
+  .sign-field-line {
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+
+  .footer-sub {
+    font-size: 11px;
+    color: var(--grey-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .footer-contact {
+    font-size: 13px;
+    color: var(--grey-light);
+    font-weight: 300;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="white" stroke-width="5" fill="none"/>
+        <polygon points="50,18 78,33.5 78,66.5 50,82 22,66.5 22,33.5" stroke="white" stroke-width="4" fill="none"/>
+        <polygon points="50,31 66,40.5 66,59.5 50,69 34,59.5 34,40.5" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="6" fill="white"/>
+        <path d="M50,50 Q60,42 65,50 Q70,62 55,68 Q38,72 30,58 Q22,42 38,32 Q56,20 72,36" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="hero-divider"></div>
+      <div class="hero-brand">Global DJ</div>
+    </div>
+    <div class="hero-eyebrow">Electronic Music from the Heart of Europe</div>
+    <h1 class="hero-title">Mitgliedschafts-Charta</h1>
+    <p class="hero-sub">Für DJs und Partner, die gemeinsam mit uns Musik in die Welt tragen möchten.</p>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<main>
+
+  <!-- 1. ÜBER UNS -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">01</div>
+      <h2 class="section-title">Wer wir sind</h2>
+    </div>
+    <div class="intro-box">
+      <p>Global DJ ist eine leidenschaftliche Community aus dem Dreiländereck DE-CH-FR, vereint durch die Liebe zur elektronischen Musik. Wir organisieren physische Events, Hybrid-Events und Online-Events mit einem klaren Ziel: Musik in die Welt zu tragen, Emotionen zu wecken und positive Energie zu verbreiten.</p>
+    </div>
+    <div class="roles">
+      <div class="role-card">
+        <div class="role-icon">🎧</div>
+        <div class="role-label">Kategorie A</div>
+        <div class="role-name">DJ / Artist</div>
+        <div class="role-desc">Du bist DJ oder Produzent und möchtest auf unseren Events auftreten und Teil unserer Artist-Community werden.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">🤝</div>
+        <div class="role-label">Kategorie B</div>
+        <div class="role-name">Partner / Veranstalter</div>
+        <div class="role-desc">Du bist Veranstalter, Venue, Sponsor oder Organisation und möchtest gemeinsam Events realisieren oder Global DJ unterstützen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. UNSERE WERTE -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">02</div>
+      <h2 class="section-title">Unsere Werte</h2>
+    </div>
+    <div class="values-list">
+      <div class="value-item">
+        <div class="value-name">Musik zuerst</div>
+        <div class="value-text">Musik steht immer im Mittelpunkt. Jede Entscheidung, jedes Event und jede Zusammenarbeit orientiert sich an musikalischer Qualität und Authentizität.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-name">Positive Energie</div>
+        <div class="value-text">Wir schaffen Räume, in denen Menschen sich verbinden, Emotionen erleben und positive Energie mitnehmen – on stage und off stage.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-name">Grenzenlos</div>
+        <div class="value-text">Musik kennt keine Grenzen. Global DJ vereint DJs und Partner aus verschiedenen Kulturen, Ländern und Backgrounds unter einem gemeinsamen Dach.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-name">Respekt & Fairness</div>
+        <div class="value-text">Alle Mitglieder behandeln sich gegenseitig mit Respekt. Diskriminierung, Ausgrenzung oder unfaires Verhalten haben bei uns keinen Platz.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-name">Professionalität</div>
+        <div class="value-text">Wir agieren professionell – in der Kommunikation, bei Auftritten und in der Zusammenarbeit. Verlässlichkeit und Pünktlichkeit sind selbstverständlich.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. REGELN -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">03</div>
+      <h2 class="section-title">Regeln der Mitgliedschaft</h2>
+    </div>
+    <div class="rules-list">
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Qualitätsanspruch:</strong> DJs reichen einen repräsentativen Mix oder Liveset-Aufnahme ein. Partner stellen ihr Konzept und ihre Infrastruktur vor.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Exklusivität:</strong> Bestätigte Bookings bei Global DJ Events werden nicht ohne Absprache abgesagt. Absagen sind mindestens 4 Wochen im Voraus zu kommunizieren.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Kommunikation:</strong> Anfragen und Vereinbarungen werden schriftlich festgehalten. Reaktionszeiten von maximal 48 Stunden werden eingehalten.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Branding:</strong> Bei Events unter Global DJ wird das Logo und Branding korrekt verwendet. Eigenpromotion ist erlaubt, darf aber nicht das Gesamtbild beeinträchtigen.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Vertraulichkeit:</strong> Interne Informationen, Bookingkonditionen und Partnerdetails werden nicht nach aussen weitergegeben.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Verhaltenskodex:</strong> Respektvoller Umgang mit Crew, Publikum und Partnern ist Pflicht. Verstösse führen zum Ausschluss aus der Community.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-check"></div>
+        <div class="rule-text"><strong>Musikstil:</strong> Akzeptierte Genres sind Deep House, House, Tech-House, Techno, Trance und Psy-Trance. Abweichungen werden im Einzelfall besprochen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BEITRITTSPROZESS -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">04</div>
+      <h2 class="section-title">So trittst du bei</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Kontaktaufnahme</div>
+          <div class="step-text">Du nimmst Kontakt via E-Mail oder WhatsApp auf und teilst uns mit, ob du als DJ/Artist oder als Partner eintreten möchtest.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Unterlagen einreichen</div>
+          <div class="step-text">DJs reichen einen Mix oder Liveset-Link ein. Partner stellen ihr Konzept, ihre Location oder ihr Angebot vor.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Prüfung & Gespräch</div>
+          <div class="step-text">Wir prüfen deine Bewerbung und melden uns innerhalb von 7 Tagen. Bei Interesse folgt ein kurzes persönliches Gespräch.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Charta unterzeichnen</div>
+          <div class="step-text">Du bestätigst die Werte und Regeln dieser Charta digital oder schriftlich.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Willkommen bei Global DJ</div>
+          <div class="step-text">Du wirst offiziell in die Community aufgenommen und erhältst Zugang zu Events, Bookings und dem Global DJ Netzwerk.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. UNTERSCHRIFT -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">05</div>
+      <h2 class="section-title">Bestätigung</h2>
+    </div>
+    <div class="sign-box">
+      <p>Mit meiner Unterschrift bestätige ich, die vorliegende Mitgliedschafts-Charta von Global DJ gelesen und verstanden zu haben. Ich verpflichte mich, die Werte und Regeln einzuhalten und als Mitglied der Community verantwortungsvoll zu handeln.</p>
+      <div class="sign-fields">
+        <div class="sign-field">
+          <div class="sign-field-label">Name / Organisation</div>
+          <div class="sign-field-line"></div>
+        </div>
+        <div class="sign-field">
+          <div class="sign-field-label">Datum</div>
+          <div class="sign-field-line"></div>
+        </div>
+        <div class="sign-field">
+          <div class="sign-field-label">Unterschrift</div>
+          <div class="sign-field-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Global DJ</div>
+  <div class="footer-sub">From Europe · For the World</div>
+  <div class="footer-contact">globaldj.ch &nbsp;·&nbsp; globaldj909@gmail.com &nbsp;·&nbsp; +41 76 366 74 62</div>
+</footer>
+
+</body>
+</html>
