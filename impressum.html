@@ -232,10 +232,17 @@
 </head>
 <body>
 
+<div id="lang-bar" style="position:fixed;top:0;right:0;z-index:9999;display:flex;gap:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(8px);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,0.12);border-top:none;border-right:none;">
+  <button onclick="setLang('de')" id="btn-de" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Deutsch">🇩🇪 <span>DE</span></button>
+  <button onclick="setLang('fr')" id="btn-fr" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Français">🇫🇷 <span>FR</span></button>
+  <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="English">🇬🇧 <span>EN</span></button>
+</div>
+
+
 <!-- HEADER -->
 <header>
   <div class="header-content">
-    <a class="back-link" href="globaldj_index.html">← Zurück zur Hauptseite</a>
+    <a class="back-link" href="globaldj_index.html" data-i18n="back">← Zurück zur Hauptseite</a>
     <div class="header-logo">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="white" stroke-width="6" fill="none"/>
@@ -245,7 +252,7 @@
       <div class="header-divider"></div>
       <div class="header-brand">Global DJ</div>
     </div>
-    <div class="header-eyebrow">Impressum &amp; rechtliche Angaben</div>
+    <div class="header-eyebrow" data-i18n="eyebrow">Impressum &amp; rechtliche Angaben</div>
   </div>
 </header>
 
@@ -253,19 +260,19 @@
 
   <!-- ANGABEN -->
   <section>
-    <h2 class="section-title">Angaben gemäß § 5 TMG</h2>
+    <h2 class="section-title" data-i18n="s01-title">Angaben gemäß § 5 TMG</h2>
     <div class="info-table">
       <div class="info-row">
-        <div class="info-label">Organisation</div>
+        <div class="info-label" data-i18n="l-org">Organisation</div>
         <div class="info-value">Global DJ</div>
       </div>
       <div class="info-row">
-        <div class="info-label">Verantwortlich</div>
-        Valentin JOUBERT
+        <div class="info-label" data-i18n="l-resp">Verantwortlich</div>
+        <!-- PLACEHOLDER: ersetze mit deinem vollständigen Namen -->
         <div class="info-value">Vorname Nachname</div>
       </div>
       <div class="info-row">
-        <div class="info-label">Adresse</div>
+        <div class="info-label" data-i18n="l-addr">Adresse</div>
         <!-- PLACEHOLDER: ersetze mit deiner Adresse -->
         <div class="info-value">
           Straße Nr.<br>
@@ -274,15 +281,15 @@
         </div>
       </div>
       <div class="info-row">
-        <div class="info-label">Region</div>
+        <div class="info-label" data-i18n="l-region">Region</div>
         <div class="info-value">Dreiländereck DE · CH · FR</div>
       </div>
       <div class="info-row">
-        <div class="info-label">E-Mail</div>
-        <div class="info-value"><a href="mailto:globaldj909@gmail.com">EMAIL</a></div>
+        <div class="info-label" data-i18n="l-email">E-Mail</div>
+        <div class="info-value"><a href="mailto:globaldj909@gmail.com" data-i18n="nav-email">EMAIL</a></div>
       </div>
       <div class="info-row">
-        <div class="info-label">Website</div>
+        <div class="info-label" data-i18n="l-web">Website</div>
         <div class="info-value"><a href="https://globaldj.ch" target="_blank">globaldj.ch</a></div>
       </div>
     </div>
@@ -290,30 +297,30 @@
 
   <!-- HAFTUNG -->
   <section>
-    <h2 class="section-title">Haftung für Inhalte</h2>
-    <p class="prose">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-    <p class="prose">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+    <h2 class="section-title" data-i18n="s02-title">Haftung für Inhalte</h2>
+    <p class="prose"><span data-i18n="s02-p1">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</span></p>
+    <p class="prose"><span data-i18n="s02-p2">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</span></p>
   </section>
 
   <!-- LINKS -->
   <section>
-    <h2 class="section-title">Haftung für Links</h2>
-    <p class="prose">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
-    <p class="prose">Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+    <h2 class="section-title" data-i18n="s03-title">Haftung für Links</h2>
+    <p class="prose"><span data-i18n="s03-p1">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</span></p>
+    <p class="prose"><span data-i18n="s03-p2">Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</span></p>
   </section>
 
   <!-- URHEBERRECHT -->
   <section>
-    <h2 class="section-title">Urheberrecht</h2>
-    <p class="prose">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
-    <p class="prose">Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+    <h2 class="section-title" data-i18n="s04-title">Urheberrecht</h2>
+    <p class="prose"><span data-i18n="s04-p1">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</span></p>
+    <p class="prose"><span data-i18n="s04-p2">Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</span></p>
   </section>
 
   <!-- DATENSCHUTZ -->
   <section>
-    <h2 class="section-title">Datenschutz</h2>
-    <p class="prose">Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
-    <p class="prose">Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+    <h2 class="section-title" data-i18n="s05-title">Datenschutz</h2>
+    <p class="prose"><span data-i18n="s05-p1">Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</span></p>
+    <p class="prose"><span data-i18n="s05-p2">Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</span></p>
     <p class="prose">Kontaktaufnahmen per E-Mail an <a href="mailto:globaldj909@gmail.com">globaldj909@gmail.com</a> werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht gespeichert oder weitergegeben.</p>
   </section>
 
@@ -324,12 +331,126 @@
   <div class="footer-brand">Global DJ</div>
   <div class="footer-tagline">From Europe · For the World</div>
   <div class="footer-links">
-    <a href="globaldj_index.html">Home</a>
-    <a href="globaldj_charta.html">Charta</a>
-    <a href="mailto:globaldj909@gmail.com">EMAIL</a>
+    <a href="globaldj_index.html" data-i18n="nav-home">Home</a>
+    <a href="globaldj_charta.html" data-i18n="nav-charta">Charta</a>
+    <a href="mailto:globaldj909@gmail.com" data-i18n="nav-email">EMAIL</a>
   </div>
   <div class="footer-copy">© 2026 Global DJ · DE-CH-FR · globaldj.ch</div>
 </footer>
+
+
+<script>
+var IMP_T = {
+  de: {
+    "page-title": "Global DJ – Impressum",
+    "eyebrow": "Impressum & rechtliche Angaben",
+    "back": "← Zurück zur Hauptseite",
+    "s01-title": "Angaben gemäß § 5 TMG",
+    "l-org": "Organisation",
+    "l-resp": "Verantwortlich",
+    "l-addr": "Adresse",
+    "l-region": "Region",
+    "l-email": "E-Mail",
+    "l-web": "Website",
+    "s02-title": "Haftung für Inhalte",
+    "s02-p1": "Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+    "s02-p2": "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
+    "s03-title": "Haftung für Links",
+    "s03-p1": "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+    "s03-p2": "Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.",
+    "s04-title": "Urheberrecht",
+    "s04-p1": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
+    "s04-p2": "Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.",
+    "s05-title": "Datenschutz",
+    "s05-p1": "Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.",
+    "s05-p2": "Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.",
+    "footer-tag": "Aus Europa · Für die Welt",
+    "nav-home": "Startseite",
+    "nav-charta": "Charta",
+    "nav-email": "EMAIL"
+  },
+  fr: {
+    "page-title": "Global DJ – Mentions légales",
+    "eyebrow": "Mentions légales & informations juridiques",
+    "back": "← Retour à la page principale",
+    "s01-title": "Mentions légales (§ 5 TMG)",
+    "l-org": "Organisation",
+    "l-resp": "Responsable",
+    "l-addr": "Adresse",
+    "l-region": "Région",
+    "l-email": "E-mail",
+    "l-web": "Site web",
+    "s02-title": "Responsabilité du contenu",
+    "s02-p1": "En tant que prestataire de services, nous sommes responsables de notre propre contenu sur ces pages conformément aux lois générales. Cependant, nous ne sommes pas tenus de surveiller les informations tierces transmises ou stockées, ni de rechercher des circonstances indiquant une activité illégale.",
+    "s02-p2": "Les obligations de supprimer ou bloquer l'utilisation d'informations conformément aux lois générales restent inchangées. Toute responsabilité à cet égard n'est possible qu'à partir du moment où nous avons connaissance d'une violation spécifique. Dès que nous prendrons connaissance de telles violations, nous supprimerons ce contenu immédiatement.",
+    "s03-title": "Responsabilité pour les liens",
+    "s03-p1": "Notre offre contient des liens vers des sites web tiers sur lesquels nous n'avons aucune influence. Par conséquent, nous ne pouvons assumer aucune garantie pour ces contenus étrangers. Le fournisseur ou exploitant respectif des pages est toujours responsable du contenu des pages liées.",
+    "s03-p2": "Les pages liées ont été vérifiées au moment de la mise en lien pour d'éventuelles violations légales. Aucun contenu illégal n'était reconnaissable au moment de la mise en lien. Un contrôle permanent du contenu des pages liées n'est pas raisonnable sans indications concrètes d'une violation légale.",
+    "s04-title": "Droit d'auteur",
+    "s04-p1": "Le contenu et les œuvres créés par les exploitants du site sur ces pages sont soumis au droit d'auteur allemand. La reproduction, le traitement, la distribution et toute forme d'utilisation au-delà des limites du droit d'auteur nécessitent le consentement écrit de l'auteur ou du créateur respectif.",
+    "s04-p2": "Les téléchargements et copies de ce site ne sont autorisés qu'à des fins privées et non commerciales. Dans la mesure où les contenus de ce site n'ont pas été créés par l'exploitant, les droits d'auteur de tiers sont respectés.",
+    "s05-title": "Protection des données",
+    "s05-p1": "L'utilisation de notre site web est généralement possible sans fournir de données personnelles. Dans la mesure où des données personnelles sont collectées sur nos pages, cela se fait toujours sur une base volontaire. Ces données ne seront pas transmises à des tiers sans votre consentement explicite.",
+    "s05-p2": "Nous attirons votre attention sur le fait que la transmission de données sur Internet peut présenter des failles de sécurité. Une protection complète des données contre l'accès de tiers n'est pas possible.",
+    "footer-tag": "D'Europe · Pour le Monde",
+    "nav-home": "Accueil",
+    "nav-charta": "Charte",
+    "nav-email": "EMAIL"
+  },
+  en: {
+    "page-title": "Global DJ – Legal Notice",
+    "eyebrow": "Legal Notice & Information",
+    "back": "← Back to Main Page",
+    "s01-title": "Legal Information (§ 5 TMG)",
+    "l-org": "Organisation",
+    "l-resp": "Responsible",
+    "l-addr": "Address",
+    "l-region": "Region",
+    "l-email": "Email",
+    "l-web": "Website",
+    "s02-title": "Liability for Content",
+    "s02-p1": "As a service provider, we are responsible for our own content on these pages in accordance with general laws. However, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances indicating illegal activity.",
+    "s02-p2": "Obligations to remove or block the use of information under general laws remain unaffected. Any liability in this regard is only possible from the moment we become aware of a specific violation. Upon becoming aware of such violations, we will remove this content immediately.",
+    "s03-title": "Liability for Links",
+    "s03-p1": "Our offering contains links to external third-party websites over whose content we have no influence. Therefore, we cannot assume any guarantee for these external contents. The respective provider or operator of the linked pages is always responsible for their content.",
+    "s03-p2": "The linked pages were checked at the time of linking for possible legal violations. No illegal content was recognisable at the time of linking. A permanent content review of linked pages is not reasonable without concrete indications of a legal violation.",
+    "s04-title": "Copyright",
+    "s04-p1": "The content and works created by the site operators on these pages are subject to German copyright law. Reproduction, editing, distribution and any kind of utilisation beyond the limits of copyright law require the written consent of the respective author or creator.",
+    "s04-p2": "Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the contents of this site were not created by the operator, the copyrights of third parties are respected.",
+    "s05-title": "Data Protection",
+    "s05-p1": "The use of our website is generally possible without providing personal data. Where personal data is collected on our pages, this is always done on a voluntary basis. This data will not be passed on to third parties without your explicit consent.",
+    "s05-p2": "We point out that data transmission on the Internet can have security vulnerabilities. Complete protection of data against access by third parties is not possible.",
+    "footer-tag": "From Europe · For the World",
+    "nav-home": "Home",
+    "nav-charta": "Charter",
+    "nav-email": "EMAIL"
+  }
+};
+
+function setLang(lang) {
+  localStorage.setItem('gdj-lang', lang);
+  applyLang(lang);
+}
+
+function applyLang(lang) {
+  var t = IMP_T[lang];
+  if (!t) return;
+  document.title = t['page-title'];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  ['de','fr','en'].forEach(function(l) {
+    var btn = document.getElementById('btn-'+l);
+    if (btn) btn.style.opacity = (l === lang) ? '1' : '0.35';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('gdj-lang') || 'de';
+  applyLang(saved);
+});
+</script>
 
 </body>
 </html>
