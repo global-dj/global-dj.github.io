@@ -474,6 +474,13 @@
 </head>
 <body>
 
+<div id="lang-bar" style="position:fixed;top:0;right:0;z-index:9999;display:flex;gap:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(8px);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,0.12);border-top:none;border-right:none;">
+  <button onclick="setLang('de')" id="btn-de" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Deutsch">🇩🇪 <span>DE</span></button>
+  <button onclick="setLang('fr')" id="btn-fr" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Français">🇫🇷 <span>FR</span></button>
+  <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="English">🇬🇧 <span>EN</span></button>
+</div>
+
+
 <!-- HERO -->
 <header>
   <div class="hero-content">
@@ -488,9 +495,9 @@
       <div class="hero-divider"></div>
       <div class="hero-brand">Global DJ</div>
     </div>
-    <div class="hero-eyebrow">Electronic Music from the Heart of Europe</div>
-    <h1 class="hero-title">Mitgliedschafts-Charta</h1>
-    <p class="hero-sub">Für DJs und Partner, die gemeinsam mit uns Musik in die Welt tragen möchten.</p>
+    <div class="hero-eyebrow" data-i18n="hero-eyebrow">Electronic Music from the Heart of Europe</div>
+    <h1 class="hero-title" data-i18n="hero-title">Mitgliedschafts-Charta</h1>
+    <p class="hero-sub" data-i18n="hero-sub">Für DJs und Partner, die gemeinsam mit uns Musik in die Welt tragen möchten.</p>
   </div>
   <div class="scroll-hint">Scroll</div>
 </header>
@@ -501,23 +508,23 @@
   <section>
     <div class="section-header">
       <div class="section-index">01</div>
-      <h2 class="section-title">Wer wir sind</h2>
+      <h2 class="section-title" data-i18n="s01-title">Wer wir sind</h2>
     </div>
     <div class="intro-box">
-      <p>Global DJ ist eine leidenschaftliche Community aus dem Dreiländereck DE-CH-FR, vereint durch die Liebe zur elektronischen Musik. Wir organisieren physische Events, Hybrid-Events und Online-Events mit einem klaren Ziel: Musik in die Welt zu tragen, Emotionen zu wecken und positive Energie zu verbreiten.</p>
+      <p data-i18n="s01-intro">Global DJ ist eine leidenschaftliche Community aus dem Dreiländereck DE-CH-FR, vereint durch die Liebe zur elektronischen Musik. Wir organisieren physische Events, Hybrid-Events und Online-Events mit einem klaren Ziel: Musik in die Welt zu tragen, Emotionen zu wecken und positive Energie zu verbreiten.</p>
     </div>
     <div class="roles">
       <div class="role-card">
         <div class="role-icon">🎧</div>
-        <div class="role-label">Kategorie A</div>
-        <div class="role-name">DJ / Artist</div>
-        <div class="role-desc">Du bist DJ oder Produzent und möchtest auf unseren Events auftreten und Teil unserer Artist-Community werden.</div>
+        <div class="role-label" data-i18n="cat-a-label">Kategorie A</div>
+        <div class="role-name" data-i18n="cat-a-name">DJ / Artist</div>
+        <div class="role-desc" data-i18n="cat-a-desc">Du bist DJ oder Produzent und möchtest auf unseren Events auftreten und Teil unserer Artist-Community werden.</div>
       </div>
       <div class="role-card">
         <div class="role-icon">🤝</div>
-        <div class="role-label">Kategorie B</div>
-        <div class="role-name">Partner / Veranstalter</div>
-        <div class="role-desc">Du bist Veranstalter, Venue, Sponsor oder Organisation und möchtest gemeinsam Events realisieren oder Global DJ unterstützen.</div>
+        <div class="role-label" data-i18n="cat-b-label">Kategorie B</div>
+        <div class="role-name" data-i18n="cat-b-name">Partner / Veranstalter</div>
+        <div class="role-desc" data-i18n="cat-b-desc">Du bist Veranstalter, Venue, Sponsor oder Organisation und möchtest gemeinsam Events realisieren oder Global DJ unterstützen.</div>
       </div>
     </div>
   </section>
@@ -526,28 +533,28 @@
   <section>
     <div class="section-header">
       <div class="section-index">02</div>
-      <h2 class="section-title">Unsere Werte</h2>
+      <h2 class="section-title" data-i18n="s02-title">Unsere Werte</h2>
     </div>
     <div class="values-list">
       <div class="value-item">
-        <div class="value-name">Musik zuerst</div>
-        <div class="value-text">Musik steht immer im Mittelpunkt. Jede Entscheidung, jedes Event und jede Zusammenarbeit orientiert sich an musikalischer Qualität und Authentizität.</div>
+        <div class="value-name" data-i18n="v1-name">Musik zuerst</div>
+        <div class="value-text" data-i18n="v1-text">Musik steht immer im Mittelpunkt. Jede Entscheidung, jedes Event und jede Zusammenarbeit orientiert sich an musikalischer Qualität und Authentizität.</div>
       </div>
       <div class="value-item">
-        <div class="value-name">Positive Energie</div>
-        <div class="value-text">Wir schaffen Räume, in denen Menschen sich verbinden, Emotionen erleben und positive Energie mitnehmen – on stage und off stage.</div>
+        <div class="value-name" data-i18n="v2-name">Positive Energie</div>
+        <div class="value-text" data-i18n="v2-text">Wir schaffen Räume, in denen Menschen sich verbinden, Emotionen erleben und positive Energie mitnehmen – on stage und off stage.</div>
       </div>
       <div class="value-item">
-        <div class="value-name">Grenzenlos</div>
-        <div class="value-text">Musik kennt keine Grenzen. Global DJ vereint DJs und Partner aus verschiedenen Kulturen, Ländern und Backgrounds unter einem gemeinsamen Dach.</div>
+        <div class="value-name" data-i18n="v3-name">Grenzenlos</div>
+        <div class="value-text" data-i18n="v3-text">Musik kennt keine Grenzen. Global DJ vereint DJs und Partner aus verschiedenen Kulturen, Ländern und Backgrounds unter einem gemeinsamen Dach.</div>
       </div>
       <div class="value-item">
         <div class="value-name">Respekt & Fairness</div>
-        <div class="value-text">Alle Mitglieder behandeln sich gegenseitig mit Respekt. Diskriminierung, Ausgrenzung oder unfaires Verhalten haben bei uns keinen Platz.</div>
+        <div class="value-text" data-i18n="v4-text">Alle Mitglieder behandeln sich gegenseitig mit Respekt. Diskriminierung, Ausgrenzung oder unfaires Verhalten haben bei uns keinen Platz.</div>
       </div>
       <div class="value-item">
-        <div class="value-name">Professionalität</div>
-        <div class="value-text">Wir agieren professionell – in der Kommunikation, bei Auftritten und in der Zusammenarbeit. Verlässlichkeit und Pünktlichkeit sind selbstverständlich.</div>
+        <div class="value-name" data-i18n="v5-name">Professionalität</div>
+        <div class="value-text" data-i18n="v5-text">Wir agieren professionell – in der Kommunikation, bei Auftritten und in der Zusammenarbeit. Verlässlichkeit und Pünktlichkeit sind selbstverständlich.</div>
       </div>
     </div>
   </section>
@@ -556,7 +563,7 @@
   <section>
     <div class="section-header">
       <div class="section-index">03</div>
-      <h2 class="section-title">Regeln der Mitgliedschaft</h2>
+      <h2 class="section-title" data-i18n="s03-title">Regeln der Mitgliedschaft</h2>
     </div>
     <div class="rules-list">
       <div class="rule-item">
@@ -594,42 +601,42 @@
   <section>
     <div class="section-header">
       <div class="section-index">04</div>
-      <h2 class="section-title">So trittst du bei</h2>
+      <h2 class="section-title" data-i18n="s04-title">So trittst du bei</h2>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-content">
-          <div class="step-title">Kontaktaufnahme</div>
-          <div class="step-text">Du nimmst Kontakt via E-Mail oder WhatsApp auf und teilst uns mit, ob du als DJ/Artist oder als Partner eintreten möchtest.</div>
+          <div class="step-title" data-i18n="step1-title">Kontaktaufnahme</div>
+          <div class="step-text" data-i18n="step1-text">Du nimmst Kontakt via E-Mail oder WhatsApp auf und teilst uns mit, ob du als DJ/Artist oder als Partner eintreten möchtest.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <div class="step-title">Unterlagen einreichen</div>
-          <div class="step-text">DJs reichen einen Mix oder Liveset-Link ein. Partner stellen ihr Konzept, ihre Location oder ihr Angebot vor.</div>
+          <div class="step-title" data-i18n="step2-title">Unterlagen einreichen</div>
+          <div class="step-text" data-i18n="step2-text">DJs reichen einen Mix oder Liveset-Link ein. Partner stellen ihr Konzept, ihre Location oder ihr Angebot vor.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
           <div class="step-title">Prüfung & Gespräch</div>
-          <div class="step-text">Wir prüfen deine Bewerbung und melden uns innerhalb von 7 Tagen. Bei Interesse folgt ein kurzes persönliches Gespräch.</div>
+          <div class="step-text" data-i18n="step3-text">Wir prüfen deine Bewerbung und melden uns innerhalb von 7 Tagen. Bei Interesse folgt ein kurzes persönliches Gespräch.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-content">
-          <div class="step-title">Charta unterzeichnen</div>
-          <div class="step-text">Du bestätigst die Werte und Regeln dieser Charta digital oder schriftlich.</div>
+          <div class="step-title" data-i18n="step4-title">Charta unterzeichnen</div>
+          <div class="step-text" data-i18n="step4-text">Du bestätigst die Werte und Regeln dieser Charta digital oder schriftlich.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">5</div>
         <div class="step-content">
-          <div class="step-title">Willkommen bei Global DJ</div>
-          <div class="step-text">Du wirst offiziell in die Community aufgenommen und erhältst Zugang zu Events, Bookings und dem Global DJ Netzwerk.</div>
+          <div class="step-title" data-i18n="step5-title">Willkommen bei Global DJ</div>
+          <div class="step-text" data-i18n="step5-text">Du wirst offiziell in die Community aufgenommen und erhältst Zugang zu Events, Bookings und dem Global DJ Netzwerk.</div>
         </div>
       </div>
     </div>
@@ -640,8 +647,158 @@
 <footer>
   <div class="footer-brand">Global DJ</div>
   <div class="footer-sub">From Europe · For the World</div>
-  <div class="footer-contact">globaldj.ch &nbsp;·&nbsp; <a href="mailto:globaldj909@gmail.com" style="color:var(--grey-light); text-decoration:underline; transition:color 0.2s;">EMAIL</a></div>
+  <div class="footer-contact">globaldj.ch &nbsp;·&nbsp; <a href="mailto:globaldj909@gmail.com" style="color:var(--grey-light); text-decoration:underline; transition:color 0.2s;" data-i18n="footer-email">EMAIL</a></div>
 </footer>
+
+
+<script>
+var CHARTA_T = {
+  de: {
+    "page-title": "Global DJ – Mitgliedschafts-Charta",
+    "hero-eyebrow": "Electronic Music from the Heart of Europe",
+    "hero-title": "Mitgliedschafts-Charta",
+    "hero-sub": "Für DJs und Partner, die gemeinsam mit uns Musik in die Welt tragen möchten.",
+    "s01-title": "Wer wir sind",
+    "s01-intro": "Global DJ ist eine leidenschaftliche Community aus dem Dreiländereck DE-CH-FR, vereint durch die Liebe zur elektronischen Musik. Wir organisieren physische Events, Hybrid-Events und Online-Events mit einem klaren Ziel: Musik in die Welt zu tragen, Emotionen zu wecken und positive Energie zu verbreiten.",
+    "cat-a-label": "Kategorie A",
+    "cat-a-name": "DJ / Artist",
+    "cat-a-desc": "Du bist DJ oder Produzent und möchtest auf unseren Events auftreten und Teil unserer Artist-Community werden.",
+    "cat-b-label": "Kategorie B",
+    "cat-b-name": "Partner / Veranstalter",
+    "cat-b-desc": "Du bist Veranstalter, Venue, Sponsor oder Organisation und möchtest gemeinsam Events realisieren oder Global DJ unterstützen.",
+    "s02-title": "Unsere Werte",
+    "v1-name": "Musik zuerst",
+    "v1-text": "Musik steht immer im Mittelpunkt. Jede Entscheidung, jedes Event und jede Zusammenarbeit orientiert sich an musikalischer Qualität und Authentizität.",
+    "v2-name": "Positive Energie",
+    "v2-text": "Wir schaffen Räume, in denen Menschen sich verbinden, Emotionen erleben und positive Energie mitnehmen – on stage und off stage.",
+    "v3-name": "Grenzenlos",
+    "v3-text": "Musik kennt keine Grenzen. Global DJ vereint DJs und Partner aus verschiedenen Kulturen, Ländern und Backgrounds unter einem gemeinsamen Dach.",
+    "v4-name": "Respekt & Fairness",
+    "v4-text": "Alle Mitglieder behandeln sich gegenseitig mit Respekt. Diskriminierung, Ausgrenzung oder unfaires Verhalten haben bei uns keinen Platz.",
+    "v5-name": "Professionalität",
+    "v5-text": "Wir agieren professionell – in der Kommunikation, bei Auftritten und in der Zusammenarbeit. Verlässlichkeit und Pünktlichkeit sind selbstverständlich.",
+    "s03-title": "Regeln der Mitgliedschaft",
+    "s04-title": "So trittst du bei",
+    "step1-title": "Kontaktaufnahme",
+    "step1-text": "Du nimmst Kontakt via E-Mail oder WhatsApp auf und teilst uns mit, ob du als DJ/Artist oder als Partner eintreten möchtest.",
+    "step2-title": "Unterlagen einreichen",
+    "step2-text": "DJs reichen einen Mix oder Liveset-Link ein. Partner stellen ihr Konzept, ihre Location oder ihr Angebot vor.",
+    "step3-title": "Prüfung & Gespräch",
+    "step3-text": "Wir prüfen deine Bewerbung und melden uns innerhalb von 7 Tagen. Bei Interesse folgt ein kurzes persönliches Gespräch.",
+    "step4-title": "Charta unterzeichnen",
+    "step4-text": "Du bestätigst die Werte und Regeln dieser Charta digital oder schriftlich.",
+    "step5-title": "Willkommen bei Global DJ",
+    "step5-text": "Du wirst offiziell in die Community aufgenommen und erhältst Zugang zu Events, Bookings und dem Global DJ Netzwerk.",
+    "footer-tag": "Aus Europa · Für die Welt",
+    "nav-charta": "Charta",
+    "footer-email": "EMAIL"
+  },
+  fr: {
+    "page-title": "Global DJ – Charte des membres",
+    "hero-eyebrow": "La musique électronique au cœur de l'Europe",
+    "hero-title": "Charte des membres",
+    "hero-sub": "Pour les DJs et les partenaires qui souhaitent porter la musique dans le monde avec nous.",
+    "s01-title": "Qui sommes-nous",
+    "s01-intro": "Global DJ est une communauté passionnée issue de la région des trois frontières DE-CH-FR, unie par l'amour de la musique électronique. Nous organisons des événements physiques, hybrides et en ligne avec un objectif clair : porter la musique dans le monde, éveiller les émotions et diffuser une énergie positive.",
+    "cat-a-label": "Catégorie A",
+    "cat-a-name": "DJ / Artiste",
+    "cat-a-desc": "Tu es DJ ou producteur et tu souhaites te produire lors de nos événements et rejoindre notre communauté d'artistes.",
+    "cat-b-label": "Catégorie B",
+    "cat-b-name": "Partenaire / Organisateur",
+    "cat-b-desc": "Tu es organisateur, lieu, sponsor ou organisation et tu souhaites réaliser des événements ensemble ou soutenir Global DJ.",
+    "s02-title": "Nos valeurs",
+    "v1-name": "La musique avant tout",
+    "v1-text": "La musique est toujours au centre. Chaque décision, chaque événement et chaque collaboration est guidé par la qualité musicale et l'authenticité.",
+    "v2-name": "Énergie positive",
+    "v2-text": "Nous créons des espaces où les gens se connectent, vivent des émotions et repartent avec une énergie positive – sur scène et en coulisses.",
+    "v3-name": "Sans frontières",
+    "v3-text": "La musique ne connaît pas de frontières. Global DJ réunit des DJs et des partenaires de différentes cultures, pays et horizons sous un même toit.",
+    "v4-name": "Respect & Équité",
+    "v4-text": "Tous les membres se traitent mutuellement avec respect. La discrimination, l'exclusion ou les comportements injustes n'ont pas leur place chez nous.",
+    "v5-name": "Professionnalisme",
+    "v5-text": "Nous agissons de manière professionnelle – dans la communication, lors des performances et dans la collaboration. La fiabilité et la ponctualité sont évidentes.",
+    "s03-title": "Règles d'adhésion",
+    "s04-title": "Comment nous rejoindre",
+    "step1-title": "Prise de contact",
+    "step1-text": "Tu nous contactes par e-mail ou WhatsApp et tu nous indiques si tu souhaites rejoindre en tant que DJ/Artiste ou en tant que partenaire.",
+    "step2-title": "Soumettre les documents",
+    "step2-text": "Les DJs soumettent un lien vers un mix ou un live set. Les partenaires présentent leur concept, leur lieu ou leur offre.",
+    "step3-title": "Évaluation & Entretien",
+    "step3-text": "Nous examinons ta candidature et te répondons dans les 7 jours. Si tu nous intéresses, un bref entretien personnel suivra.",
+    "step4-title": "Signer la charte",
+    "step4-text": "Tu confirmes les valeurs et les règles de cette charte de manière numérique ou écrite.",
+    "step5-title": "Bienvenue chez Global DJ",
+    "step5-text": "Tu es officiellement accueilli(e) dans la communauté et tu as accès aux événements, aux bookings et au réseau Global DJ.",
+    "footer-tag": "D'Europe · Pour le Monde",
+    "nav-charta": "Charte",
+    "footer-email": "EMAIL"
+  },
+  en: {
+    "page-title": "Global DJ – Membership Charter",
+    "hero-eyebrow": "Electronic Music from the Heart of Europe",
+    "hero-title": "Membership Charter",
+    "hero-sub": "For DJs and partners who want to bring music to the world together with us.",
+    "s01-title": "Who we are",
+    "s01-intro": "Global DJ is a passionate community rooted in the tri-border region DE-CH-FR, united by the love of electronic music. We organise physical, hybrid and online events with one clear goal: to bring music to the world, evoke emotions and spread positive energy.",
+    "cat-a-label": "Category A",
+    "cat-a-name": "DJ / Artist",
+    "cat-a-desc": "You are a DJ or producer and want to perform at our events and become part of our artist community.",
+    "cat-b-label": "Category B",
+    "cat-b-name": "Partner / Organizer",
+    "cat-b-desc": "You are an organizer, venue, sponsor or organisation and want to co-create events or support Global DJ.",
+    "s02-title": "Our Values",
+    "v1-name": "Music First",
+    "v1-text": "Music is always at the centre. Every decision, every event and every collaboration is guided by musical quality and authenticity.",
+    "v2-name": "Positive Energy",
+    "v2-text": "We create spaces where people connect, experience emotions and take away positive energy – on stage and off stage.",
+    "v3-name": "Borderless",
+    "v3-text": "Music knows no borders. Global DJ unites DJs and partners from different cultures, countries and backgrounds under one roof.",
+    "v4-name": "Respect & Fairness",
+    "v4-text": "All members treat each other with respect. Discrimination, exclusion or unfair behaviour have no place with us.",
+    "v5-name": "Professionalism",
+    "v5-text": "We act professionally – in communication, at performances and in collaboration. Reliability and punctuality go without saying.",
+    "s03-title": "Membership Rules",
+    "s04-title": "How to Join",
+    "step1-title": "Get in Touch",
+    "step1-text": "Contact us by email or WhatsApp and let us know whether you want to join as a DJ/Artist or as a partner.",
+    "step2-title": "Submit Your Documents",
+    "step2-text": "DJs submit a mix or live set link. Partners present their concept, venue or offer.",
+    "step3-title": "Review & Interview",
+    "step3-text": "We review your application and get back to you within 7 days. If we're interested, a brief personal conversation follows.",
+    "step4-title": "Sign the Charter",
+    "step4-text": "You confirm the values and rules of this charter digitally or in writing.",
+    "step5-title": "Welcome to Global DJ",
+    "step5-text": "You are officially welcomed into the community and gain access to events, bookings and the Global DJ network.",
+    "footer-tag": "From Europe · For the World",
+    "nav-charta": "Charter",
+    "footer-email": "EMAIL"
+  }
+};
+
+function setLang(lang) {
+  localStorage.setItem('gdj-lang', lang);
+  applyLang(lang);
+}
+
+function applyLang(lang) {
+  var t = CHARTA_T[lang];
+  if (!t) return;
+  document.title = t['page-title'];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  ['de','fr','en'].forEach(function(l) {
+    var btn = document.getElementById('btn-'+l);
+    if (btn) btn.style.opacity = (l === lang) ? '1' : '0.35';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = localStorage.getItem('gdj-lang') || 'de';
+  applyLang(saved);
+});
+</script>
 
 </body>
 </html>
