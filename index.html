@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global DJ – Electronic Music from the Heart of Europe</title>
+<meta name="description" content="DJ's collective for electronic music from Europe 🎶 Events worldwide, uniting DJs to spark emotions & spread positive energy. 🌍">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f5;
+    --grey-dark: #141414;
+    --grey-mid: #1e1e1e;
+    --grey-light: #888;
+    --grey-lighter: #bbb;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HERO ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px 100px;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 25%, var(--black) 75%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .hero-logo svg { width: 72px; height: 72px; }
+
+  .hero-divider {
+    width: 1px; height: 56px;
+    background: rgba(255,255,255,0.5);
+  }
+
+  .hero-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 12vw, 108px);
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  /* Social icons row */
+  .social-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-lighter);
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  .social-btn .icon { font-size: 14px; }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--grey-light);
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, var(--grey-light), transparent);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.9; }
+  }
+
+  /* ── MAIN ── */
+  main { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── SECTION ── */
+  section { border-top: 1px solid var(--border); padding: 64px 0; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .section-index {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 40px);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /* ── LINK CARDS ── */
+  .link-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--grey-dark);
+    padding: 20px 24px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+
+  .link-card:hover {
+    border-left-color: var(--white);
+    background: var(--grey-mid);
+  }
+
+  .link-card-icon { font-size: 22px; flex-shrink: 0; width: 32px; text-align: center; }
+
+  .link-card-body { flex: 1; }
+
+  .link-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .link-card-sub {
+    font-size: 12px;
+    color: var(--grey-light);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  .link-card-arrow {
+    color: rgba(255,255,255,0.2);
+    font-size: 18px;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .link-card:hover .link-card-arrow {
+    color: var(--white);
+    transform: translateX(4px);
+  }
+
+  /* ── EVENT CARDS ── */
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  @media (max-width: 600px) { .event-grid { grid-template-columns: 1fr; } }
+
+  .event-card {
+    background: var(--grey-dark);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .event-card:hover { background: var(--grey-mid); }
+
+  .event-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .event-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--grey-light);
+    margin-bottom: 8px;
+  }
+
+  .event-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .event-location {
+    font-size: 12px;
+    color: var(--grey-light);
+    font-weight: 300;
+  }
+
+  .event-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--grey-lighter);
+  }
+
+  .event-badge.upcoming { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+  /* ── MEMBER CARDS ── */
+  .member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  @media (max-width: 600px) { .member-grid { grid-template-columns: 1fr; } }
+
+  .member-card {
+    background: var(--grey-dark);
+    padding: 28px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .member-card:hover { background: var(--grey-mid); }
+
+  .member-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--white);
+  }
+
+  .member-avatar {
+    width: 56px; height: 56px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 14px;
+    background: var(--grey-mid);
+  }
+
+  .member-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .member-role {
+    font-size: 11px;
+    color: var(--grey-light);
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .member-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--grey-lighter);
+  }
+
+  /* ── CONTACT BOX ── */
+  .contact-box {
+    background: var(--grey-dark);
+    border-top: 2px solid var(--white);
+    padding: 40px 36px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-item {
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .contact-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+
+  .contact-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .footer-logo svg { width: 36px; height: 36px; }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+
+  .footer-tagline {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 300;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <div class="hero-content">
+    <div class="hero-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="white" stroke-width="5" fill="none"/>
+        <polygon points="50,18 78,33.5 78,66.5 50,82 22,66.5 22,33.5" stroke="white" stroke-width="4" fill="none"/>
+        <polygon points="50,31 66,40.5 66,59.5 50,69 34,59.5 34,40.5" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="50" cy="50" r="6" fill="white"/>
+        <path d="M50,50 Q60,42 65,50 Q70,62 55,68 Q38,72 30,58 Q22,42 38,32 Q56,20 72,36" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="hero-divider"></div>
+      <div class="hero-brand">Global DJ</div>
+    </div>
+    <div class="hero-tag">DJ's Collective · DE · CH · FR · 🌍</div>
+    <p class="hero-desc">Electronic Music from the Heart of Europe. Events worldwide, uniting DJs to spark emotions & spread positive energy.</p>
+    <div class="social-row">
+      <a class="social-btn" href="https://www.instagram.com/globaldj909" target="_blank"><span class="icon">📸</span> Instagram</a>
+      <a class="social-btn" href="https://www.facebook.com/globaldj909" target="_blank"><span class="icon">📘</span> Facebook</a>
+      <a class="social-btn" href="https://www.twitch.tv/globaldj" target="_blank"><span class="icon">🟣</span> Twitch</a>
+      <a class="social-btn" href="mailto:globaldj909@gmail.com"><span class="icon">✉</span> Email</a>
+      <a class="social-btn" href="https://globaldj.ch" target="_blank"><span class="icon">🌐</span> Website</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<main>
+
+  <!-- COMING EVENTS -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">01</div>
+      <h2 class="section-title">Coming Events</h2>
+    </div>
+    <div class="event-grid">
+      <a href="https://www.instagram.com/p/DZIR1iiDZfO/" target="_blank">
+        <div class="event-card">
+          <div class="event-date">29 · 07 · 2026</div>
+          <div class="event-title">Nature One 26 Camping</div>
+          <div class="event-location">Nature One Festival · Camping Stage</div>
+          <div class="event-badge upcoming">Upcoming</div>
+        </div>
+      </a>
+      <a href="https://raidpal.com/en/profile/globaldj" target="_blank">
+        <div class="event-card">
+          <div class="event-date">Online</div>
+          <div class="event-title">Twitch Upcoming Events</div>
+          <div class="event-location">Live Stream · globaldj</div>
+          <div class="event-badge upcoming">Live</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">02</div>
+      <h2 class="section-title">Members</h2>
+    </div>
+    <div class="member-grid">
+      <a href="https://linktr.ee/deejayvax" target="_blank">
+        <div class="member-card">
+          <div class="member-avatar">🎧</div>
+          <div class="member-name">DeeJay Vax</div>
+          <div class="member-role">DJ · Producer · House · Techno</div>
+          <div class="member-tag">Founder</div>
+        </div>
+      </a>
+      <a href="https://www.mixcloud.com/NDWave" target="_blank">
+        <div class="member-card">
+          <div class="member-avatar">🎵</div>
+          <div class="member-name">ND Wave</div>
+          <div class="member-role">DJ · Electronic Music</div>
+          <div class="member-tag">Member</div>
+        </div>
+      </a>
+      <a href="https://www.mixcloud.com/Kincaid82" target="_blank">
+        <div class="member-card">
+          <div class="member-avatar">🎶</div>
+          <div class="member-name">Kincaid</div>
+          <div class="member-role">DJ · Electronic Music</div>
+          <div class="member-tag">Member</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">03</div>
+      <h2 class="section-title">Past Events</h2>
+    </div>
+    <div class="link-grid">
+      <a href="https://fb.me/e/73tRHgPhY" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🇫🇷</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Fête de la Musique 2026 – Saint-Louis</div>
+            <div class="link-card-sub">21 June 2026 · Saint-Louis, France</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://fb.me/e/4hwnL9R6W" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🇩🇪</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Fête de la Musique 2026 – Lörrach</div>
+            <div class="link-card-sub">21 June 2026 · Lörrach, Germany</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/reel/DZnTrlSNjn_/" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🌅</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Day Dance Feldschlösschen</div>
+            <div class="link-card-sub">20 June 2026 · Rheinfelden</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/reel/DY-baidFVIU/" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🌇</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Sunset Plausch Feldschlösschen</div>
+            <div class="link-card-sub">18 June 2026 · Rheinfelden</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://fb.me/e/7EKqxRhju" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🏠</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Triple House</div>
+            <div class="link-card-sub">9 May 2026 · Basel, Switzerland</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/p/DWirG8mAr7d/" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🍺</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Brauereifest Feldschlösschen 2026</div>
+            <div class="link-card-sub">April 2026 · Rheinfelden</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://raidpal.com/en/event/neon-horizon-3-day-house-techno-odyssey" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🌐</div>
+          <div class="link-card-body">
+            <div class="link-card-title">NEON HORIZON – 3-Day House & Techno Odyssey</div>
+            <div class="link-card-sub">20–22 March 2026 · Online</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://raidpal.com/en/event/bday-vax-max-techno-meets-trance" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🎉</div>
+          <div class="link-card-body">
+            <div class="link-card-title">BDAY VAX-MAX: Techno Meets Trance</div>
+            <div class="link-card-sub">Online Event</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/events/1052372613131590" target="_blank">
+        <div class="link-card">
+          <div class="link-card-icon">🎵</div>
+          <div class="link-card-body">
+            <div class="link-card-title">Fête de la Musique 2025</div>
+            <div class="link-card-sub">June 2025 · Dreiländereck</div>
+          </div>
+          <div class="link-card-arrow">→</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="section-header">
+      <div class="section-index">04</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-box">
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-label">🇩🇪 🇨🇭 DE / CH</div>
+          <div class="contact-value">+41 76 366 74 62</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">🇫🇷 FR</div>
+          <div class="contact-value">+33 74 964 77 49</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">✉ Email</div>
+          <div class="contact-value">globaldj909@gmail.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">🌐 Website</div>
+          <div class="contact-value">globaldj.ch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="white" stroke-width="6" fill="none"/>
+      <polygon points="50,20 76,34.5 76,65.5 50,80 24,65.5 24,34.5" stroke="white" stroke-width="4" fill="none"/>
+      <circle cx="50" cy="50" r="7" fill="white"/>
+    </svg>
+    <div class="footer-brand">Global DJ</div>
+  </div>
+  <div class="footer-tagline">From Europe · For the World</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/globaldj909" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/globaldj909" target="_blank">Facebook</a>
+    <a href="https://www.twitch.tv/globaldj" target="_blank">Twitch</a>
+    <a href="mailto:globaldj909@gmail.com">Email</a>
+    <a href="globaldj_charta.html">Charta</a>
+  </div>
+  <div class="footer-copy">© 2026 Global DJ · DE-CH-FR · globaldj.ch</div>
+</footer>
+
+</body>
+</html>
