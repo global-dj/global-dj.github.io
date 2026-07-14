@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global DJ – Impressum</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f5;
+    --grey-dark: #141414;
+    --grey-mid: #1e1e1e;
+    --grey-light: #888;
+    --grey-lighter: #bbb;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  a { color: var(--white); }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    padding: 60px 24px 48px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, var(--black) 85%);
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--white); }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .header-logo svg { width: 40px; height: 40px; }
+
+  .header-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 8vw, 64px);
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .header-divider {
+    width: 1px; height: 36px;
+    background: rgba(255,255,255,0.4);
+  }
+
+  .header-eyebrow {
+    font-size: 9px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    border-top: 1px solid var(--border);
+    padding: 48px 0;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+
+  /* ── INFO ROWS ── */
+  .info-table {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    background: var(--grey-dark);
+    padding: 14px 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 500px) {
+    .info-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 16px; }
+  }
+
+  .info-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+    padding-top: 3px;
+  }
+
+  .info-value {
+    font-size: 15px;
+    color: var(--grey-lighter);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .info-value a {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── PROSE ── */
+  .prose {
+    font-size: 14px;
+    color: var(--grey-lighter);
+    font-weight: 300;
+    line-height: 1.9;
+  }
+
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+  }
+
+  .footer-tagline {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey-light);
+    font-weight: 300;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-content">
+    <a class="back-link" href="globaldj_index.html">← Zurück zur Hauptseite</a>
+    <div class="header-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="white" stroke-width="6" fill="none"/>
+        <polygon points="50,20 76,34.5 76,65.5 50,80 24,65.5 24,34.5" stroke="white" stroke-width="4" fill="none"/>
+        <circle cx="50" cy="50" r="7" fill="white"/>
+      </svg>
+      <div class="header-divider"></div>
+      <div class="header-brand">Global DJ</div>
+    </div>
+    <div class="header-eyebrow">Impressum &amp; rechtliche Angaben</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ANGABEN -->
+  <section>
+    <h2 class="section-title">Angaben gemäß § 5 TMG</h2>
+    <div class="info-table">
+      <div class="info-row">
+        <div class="info-label">Organisation</div>
+        <div class="info-value">Global DJ</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Verantwortlich</div>
+        <!-- PLACEHOLDER: ersetze mit deinem vollständigen Namen -->
+        <div class="info-value">Vorname Nachname</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Adresse</div>
+        <!-- PLACEHOLDER: ersetze mit deiner Adresse -->
+        <div class="info-value">
+          Straße Nr.<br>
+          PLZ Ort<br>
+          Deutschland
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Region</div>
+        <div class="info-value">Dreiländereck DE · CH · FR</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">E-Mail</div>
+        <div class="info-value"><a href="mailto:globaldj909@gmail.com">EMAIL</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Website</div>
+        <div class="info-value"><a href="https://globaldj.ch" target="_blank">globaldj.ch</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAFTUNG -->
+  <section>
+    <h2 class="section-title">Haftung für Inhalte</h2>
+    <p class="prose">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+    <p class="prose">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+  </section>
+
+  <!-- LINKS -->
+  <section>
+    <h2 class="section-title">Haftung für Links</h2>
+    <p class="prose">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+    <p class="prose">Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+  </section>
+
+  <!-- URHEBERRECHT -->
+  <section>
+    <h2 class="section-title">Urheberrecht</h2>
+    <p class="prose">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    <p class="prose">Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+  </section>
+
+  <!-- DATENSCHUTZ -->
+  <section>
+    <h2 class="section-title">Datenschutz</h2>
+    <p class="prose">Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+    <p class="prose">Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+    <p class="prose">Kontaktaufnahmen per E-Mail an <a href="mailto:globaldj909@gmail.com">globaldj909@gmail.com</a> werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht gespeichert oder weitergegeben.</p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Global DJ</div>
+  <div class="footer-tagline">From Europe · For the World</div>
+  <div class="footer-links">
+    <a href="globaldj_index.html">Home</a>
+    <a href="globaldj_charta.html">Charta</a>
+    <a href="mailto:globaldj909@gmail.com">EMAIL</a>
+  </div>
+  <div class="footer-copy">© 2026 Global DJ · DE-CH-FR · globaldj.ch</div>
+</footer>
+
+</body>
+</html>
