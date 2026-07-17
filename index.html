@@ -684,8 +684,8 @@
       <div class="section-index">01</div>
       <h2 class="section-title" data-i18n="s01-title">Coming Events</h2>
     </div>
-    <div class="event-grid">
-      <a href="https://www.instagram.com/reel/DawwTADNzLk/?igsh=aDB0OXIyc2RhcW5x" target="_blank">
+    <div class="event-grid" id="upcoming-grid">
+      <a href="https://www.instagram.com/reel/DawwTADNzLk/?igsh=aDB0OXIyc2RhcW5x" target="_blank" data-event-date="2026-07-16">
         <div class="event-card">
           <div class="event-date">16 · 07 · 2026</div>
           <div class="event-title">Sunset Plausch</div>
@@ -693,7 +693,7 @@
           <div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>
         </div>
       </a>
-      <a href="https://www.instagram.com/reel/Daww-MANXUo/?igsh=djl0b2QzaDdwOGNi" target="_blank">
+      <a href="https://www.instagram.com/reel/Daww-MANXUo/?igsh=djl0b2QzaDdwOGNi" target="_blank" data-event-date="2026-07-18">
         <div class="event-card">
           <div class="event-date">18 · 07 · 2026</div>
           <div class="event-title">Day Dance</div>
@@ -701,7 +701,7 @@
           <div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>
         </div>
       </a>
-      <a href="https://www.instagram.com/p/DZIR1iiDZfO/" target="_blank">
+      <a href="https://www.instagram.com/p/DZIR1iiDZfO/" target="_blank" data-event-date="2026-07-30">
         <div class="event-card">
           <div class="event-date">30 · 07 · 2026</div>
           <div class="event-title">Nature One 26 Camping</div>
@@ -789,7 +789,7 @@
       <div class="section-index">03</div>
       <h2 class="section-title" data-i18n="s03-title">Past Events</h2>
     </div>
-    <div class="link-grid">
+    <div class="link-grid" id="past-grid">
       <a href="https://fb.me/e/73tRHgPhY" target="_blank">
         <div class="link-card">
           <div class="link-card-icon">🇫🇷</div>
@@ -1277,5 +1277,63 @@ document.addEventListener('DOMContentLoaded', function() {
     textEl.textContent = isOpen ? labels[lang].closed : labels[lang].open;
   }
 </script>
+
+<script>
+// Auto-move expired upcoming events to past events section
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  var upcomingGrid = document.getElementById('upcoming-grid');
+  var pastGrid = document.getElementById('past-grid');
+
+  if (!upcomingGrid || !pastGrid) return;
+
+  var eventLinks = upcomingGrid.querySelectorAll('a[data-event-date]');
+
+  eventLinks.forEach(function(link) {
+    var dateStr = link.getAttribute('data-event-date');
+    if (!dateStr) return;
+
+    var eventDate = new Date(dateStr);
+    eventDate.setHours(0, 0, 0, 0);
+
+    if (eventDate < today) {
+      // Build a link-card style element for the past section
+      var title = link.querySelector('.event-title') ? link.querySelector('.event-title').textContent : '';
+      var location = link.querySelector('.event-location') ? link.querySelector('.event-location').textContent : '';
+      var parts = dateStr.split('-');
+      var dateLabel = parts[2] + ' · ' + parts[1] + ' · ' + parts[0];
+
+      var pastCard = document.createElement('a');
+      pastCard.href = link.href;
+      pastCard.target = '_blank';
+      pastCard.innerHTML =
+        '<div class="link-card">' +
+        '  <div class="link-card-icon">📅</div>' +
+        '  <div class="link-card-body">' +
+        '    <div class="link-card-title">' + title + '</div>' +
+        '    <div class="link-card-sub">' + dateLabel + ' · ' + location + '</div>' +
+        '  </div>' +
+        '  <div class="link-card-arrow">→</div>' +
+        '</div>';
+
+      // Insert at top of past-grid
+      pastGrid.insertBefore(pastCard, pastGrid.firstChild);
+
+      // Remove from upcoming
+      link.remove();
+    }
+  });
+
+  // If upcoming grid is empty, show a message
+  var remaining = upcomingGrid.querySelectorAll('a[data-event-date]');
+  var onlineEvents = upcomingGrid.querySelectorAll('a:not([data-event-date])');
+  if (remaining.length === 0 && onlineEvents.length === 0) {
+    upcomingGrid.innerHTML = '<p style="color:var(--grey-light);font-size:14px;font-weight:300;letter-spacing:1px;padding:20px 0;" data-i18n="no-upcoming">No upcoming events at the moment – stay tuned!</p>';
+  }
+});
+</script>
+
 </body>
 </html>
