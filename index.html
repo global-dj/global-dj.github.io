@@ -651,9 +651,9 @@
 
 <!-- ── LANGUAGE SWITCHER ── -->
 <div id="lang-bar" style="position:fixed;top:0;right:0;z-index:9999;display:flex;gap:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(8px);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,0.12);border-top:none;border-right:none;">
-  <button onclick="setLang('de')" id="btn-de" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Deutsch">🇩🇪 <span>DE</span></button>
-  <button onclick="setLang('fr')" id="btn-fr" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="Français">🇫🇷 <span>FR</span></button>
-  <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;padding:8px 14px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;display:flex;align-items:center;gap:5px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:#f5f5f5;" title="English">🇬🇧 <span>EN</span></button>
+  <button onclick="setLang('de')" id="btn-de" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 16px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#f5f5f5;" title="Deutsch">DE</button>
+  <button onclick="setLang('fr')" id="btn-fr" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 16px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#f5f5f5;" title="Français">FR</button>
+  <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;padding:8px 16px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#f5f5f5;" title="English">EN</button>
 </div>
 
 
@@ -916,16 +916,16 @@
         <div class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-field">
-              <label class="form-label" for="cf-name"><span data-i18n="cf-name">Your Name</span</label>
+              <label class="form-label" for="cf-name"><span data-i18n="cf-name">Your Name</span></label>
               <input class="form-input" id="cf-name" type="text" placeholder="DeeJay Example">
             </div>
             <div class="form-field">
-              <label class="form-label" for="cf-email"><span data-i18n="cf-email">Your Email</span</label>
+              <label class="form-label" for="cf-email"><span data-i18n="cf-email">Your Email</span></label>
               <input class="form-input" id="cf-email" type="email" placeholder="you@example.com">
             </div>
           </div>
           <div class="form-field">
-            <label class="form-label" for="cf-msg"><span data-i18n="cf-msg">Message</span</label>
+            <label class="form-label" for="cf-msg"><span data-i18n="cf-msg">Message</span></label>
             <textarea class="form-textarea" id="cf-msg" rows="5" placeholder="Hello Global DJ, I would like to..."></textarea>
           </div>
           <button class="form-submit" onclick="sendMail()" data-i18n="cf-send">Send Message</button>
@@ -971,16 +971,16 @@
       <div class="join-form" id="joinFormWrap" style="display:none;">
         <div class="form-row">
           <div class="form-field">
-            <label class="form-label" for="join-name"><span data-i18n="f-name">Full Name / DJ Name</span</label>
+            <label class="form-label" for="join-name"><span data-i18n="f-name">Full Name / DJ Name</span></label>
             <input class="form-input" id="join-name" type="text" placeholder="DeeJay Example">
           </div>
           <div class="form-field">
-            <label class="form-label" for="join-email"><span data-i18n="f-email">Email</span</label>
+            <label class="form-label" for="join-email"><span data-i18n="f-email">Email</span></label>
             <input class="form-input" id="join-email" type="email" placeholder="you@example.com">
           </div>
         </div>
         <div class="form-field">
-          <label class="form-label" for="join-role"><span data-i18n="f-role-label">I am a …</span</label>
+          <label class="form-label" for="join-role"><span data-i18n="f-role-label">I am a …</span></label>
           <select class="form-input" id="join-role">
             <option value="" disabled selected data-i18n="f-role-label">Select your role</option>
             <option value="dj" data-i18n="f-role-dj">DJ / Artist</option>
@@ -990,21 +990,21 @@
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label class="form-label" for="join-social"><span data-i18n="f-social">Social Media Link</span</label>
+            <label class="form-label" for="join-social"><span data-i18n="f-social">Social Media Link</span></label>
             <input class="form-input" id="join-social" type="url" placeholder="https://instagram.com/yourname">
           </div>
           <div class="form-field">
-            <label class="form-label" for="join-mix"><span data-i18n="f-mix">Mix / Music Link</span</label>
+            <label class="form-label" for="join-mix"><span data-i18n="f-mix">Mix / Music Link</span></label>
             <input class="form-input" id="join-mix" type="url" placeholder="https://soundcloud.com/yourmix">
           </div>
         </div>
         <div class="form-field">
-          <label class="form-label" for="join-msg"><span data-i18n="f-msg-join">Why do you want to join? (optional)</span</label>
+          <label class="form-label" for="join-msg"><span data-i18n="f-msg-join">Why do you want to join? (optional)</span></label>
           <textarea class="form-textarea" id="join-msg" rows="4" placeholder="Tell us a bit about yourself and your music..."></textarea>
         </div>
         <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
           <button class="form-submit" onclick="sendJoin()" data-i18n="f-apply">Apply Now</button>
-          <span style="font-size:12px; color:var(--grey-light); font-weight:300;"><span data-i18n="f-charter-note">By applying you confirm to have read and accepted the</span> <a href="globaldj_charta.html" target="_blank" style="color:var(--white); text-decoration:underline;" data-i18n="f-charter-link">Membership Charter</a><span data-i18n="f-charter-note2">.</span></span>
+          <span style="font-size:12px; color:var(--grey-light); font-weight:300;"><span data-i18n="f-charter-note">By applying you confirm to have read and accepted the</span> <a href="charta.html" target="_blank" style="color:var(--white); text-decoration:underline;" data-i18n="f-charter-link">Membership Charter</a><span data-i18n="f-charter-note2">.</span></span>
         </div>
         <div class="form-success" id="joinSuccess" data-i18n="join-success">&#10003; Application sent — we'll get back to you soon!</div>
       </div>
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-
+<script>
   function togglePastEvents() {
     var more = document.getElementById('past-events-more');
     var arrow = document.getElementById('past-events-arrow');
@@ -1267,16 +1267,15 @@ document.addEventListener('DOMContentLoaded', function() {
     more.style.flexDirection = 'column';
     more.style.gap = '2px';
     arrow.classList.toggle('open', !isOpen);
-    // update button text via i18n key
     var textEl = btn.querySelector('[data-i18n]');
     var lang = localStorage.getItem('gdj-lang') || 'en';
     var labels = {
       de: { open: 'Weniger anzeigen', closed: 'Mehr Events anzeigen' },
-      fr: { open: 'Voir moins', closed: 'Voir plus d\'événements' },
+      fr: { open: 'Voir moins', closed: "Voir plus d'événements" },
       en: { open: 'Show less', closed: 'Show more events' }
     };
     textEl.textContent = isOpen ? labels[lang].closed : labels[lang].open;
   }
-
+</script>
 </body>
 </html>
