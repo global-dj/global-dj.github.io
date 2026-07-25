@@ -90,8 +90,8 @@
   }
 
   .hero-tag {
-    font-size: 10px;
-    letter-spacing: 6px;
+    font-size: 15px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--grey-light);
     font-weight: 300;
@@ -649,6 +649,7 @@
 </head>
 <body>
 
+
 <!-- ── LANGUAGE SWITCHER ── -->
 <div id="lang-bar" style="position:fixed;top:0;right:0;z-index:9999;display:flex;gap:0;background:rgba(10,10,10,0.9);backdrop-filter:blur(8px);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,0.12);border-top:none;border-right:none;">
   <button onclick="setLang('de')" id="btn-de" style="background:none;border:none;border-right:1px solid rgba(255,255,255,0.08);padding:8px 16px;cursor:pointer;opacity:0.35;transition:opacity 0.2s;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;color:#f5f5f5;" title="Deutsch">DE</button>
@@ -685,38 +686,7 @@
       <h2 class="section-title" data-i18n="s01-title">Coming Events</h2>
     </div>
     <div class="event-grid" id="upcoming-grid">
-      <a href="https://www.instagram.com/reel/DawwTADNzLk/?igsh=aDB0OXIyc2RhcW5x" target="_blank" data-event-date="2026-07-16">
-        <div class="event-card">
-          <div class="event-date">16 · 07 · 2026</div>
-          <div class="event-title">Sunset Plausch</div>
-          <div class="event-location">Feldschlösschen · Rheinfelden</div>
-          <div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/reel/Daww-MANXUo/?igsh=djl0b2QzaDdwOGNi" target="_blank" data-event-date="2026-07-18">
-        <div class="event-card">
-          <div class="event-date">18 · 07 · 2026</div>
-          <div class="event-title">Day Dance</div>
-          <div class="event-location">Feldschlösschen · Rheinfelden</div>
-          <div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DZIR1iiDZfO/" target="_blank" data-event-date="2026-07-30">
-        <div class="event-card">
-          <div class="event-date">30 · 07 · 2026</div>
-          <div class="event-title">Nature One 26 Camping</div>
-          <div class="event-location">Nature One Festival · Camping Stage · DE</div>
-          <div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>
-        </div>
-      </a>
-      <a href="https://raidpal.com/en/profile/globaldj" target="_blank">
-        <div class="event-card">
-          <div class="event-date">Online</div>
-          <div class="event-title">Twitch Upcoming Events</div>
-          <div class="event-location">Live Stream · globaldj</div>
-          <div class="event-badge upcoming" data-i18n="badge-live">Live</div>
-        </div>
-      </a>
+      <div style="color:var(--grey-light);font-size:14px;font-weight:300;letter-spacing:1px;padding:20px 0;grid-column:1/-1;" id="upcoming-loading">Lade Events...</div>
     </div>
   </section>
 
@@ -756,27 +726,7 @@
           <img src="FOTO_DEEJAYVAX.jpg" alt="DeeJay Vax" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">DeeJay Vax</div>
-          <div class="member-role">DJ · Deep House · Techno</div>
-          <div class="member-tag" data-i18n="member-artist">Artist</div>
-        </div>
-      </a>
-      <a href="https://www.mixcloud.com/NDWave" target="_blank">
-        <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_NDWAVE.jpg" -->
-          <img src="FOTO_NDWAVE.jpg" alt="ND Wave" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="member-avatar" style="display:none;">🎵</div>
-          <div class="member-name">ND Wave</div>
-          <div class="member-role">DJ · Electronic Music</div>
-          <div class="member-tag" data-i18n="member-artist">Artist</div>
-        </div>
-      </a>
-      <a href="https://www.mixcloud.com/Kincaid82" target="_blank">
-        <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_KINCAID.jpg" -->
-          <img src="FOTO_KINCAID.jpg" alt="Kincaid" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="member-avatar" style="display:none;">🎶</div>
-          <div class="member-name">Kincaid</div>
-          <div class="member-role">DJ · Electronic Music</div>
+          <div class="member-role">DJ · House · Tech House · Techno</div>
           <div class="member-tag" data-i18n="member-artist">Artist</div>
         </div>
       </a>
@@ -790,105 +740,13 @@
       <h2 class="section-title" data-i18n="s03-title">Past Events</h2>
     </div>
     <div class="link-grid" id="past-grid">
-      <a href="https://fb.me/e/73tRHgPhY" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🇫🇷</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Fête de la Musique 2026 – Saint-Louis</div>
-            <div class="link-card-sub">21 June 2026 · Saint-Louis, France</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://fb.me/e/4hwnL9R6W" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🇩🇪</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Fête de la Musique 2026 – Lörrach</div>
-            <div class="link-card-sub">21 June 2026 · Lörrach, Germany</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/reel/DZnTrlSNjn_/" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🌅</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Day Dance Feldschlösschen</div>
-            <div class="link-card-sub">20 June 2026 · Rheinfelden</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/reel/DY-baidFVIU/" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🌇</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Sunset Plausch Feldschlösschen</div>
-            <div class="link-card-sub">18 June 2026 · Rheinfelden</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <!-- Hidden events (accordion) -->
-      <div id="past-events-more" style="display:none; flex-direction:column; gap:2px; width:100%;">
-        <a href="https://fb.me/e/7EKqxRhju" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🏠</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Triple House</div>
-            <div class="link-card-sub">9 May 2026 · Basel, Switzerland</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://www.instagram.com/p/DWirG8mAr7d/" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🍺</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Brauereifest Feldschlösschen 2026</div>
-            <div class="link-card-sub">April 2026 · Rheinfelden</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://raidpal.com/en/event/neon-horizon-3-day-house-techno-odyssey" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🌐</div>
-          <div class="link-card-body">
-            <div class="link-card-title">NEON HORIZON – 3-Day House & Techno Odyssey</div>
-            <div class="link-card-sub">20–22 March 2026 · Online</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://raidpal.com/en/event/bday-vax-max-techno-meets-trance" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🎉</div>
-          <div class="link-card-body">
-            <div class="link-card-title">BDAY VAX-MAX: Techno Meets Trance</div>
-            <div class="link-card-sub">Online Event</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      <a href="https://www.facebook.com/events/1052372613131590" target="_blank">
-        <div class="link-card">
-          <div class="link-card-icon">🎵</div>
-          <div class="link-card-body">
-            <div class="link-card-title">Fête de la Musique 2025</div>
-            <div class="link-card-sub">June 2025 · Dreiländereck</div>
-          </div>
-          <div class="link-card-arrow">→</div>
-        </div>
-      </a>
-      </div>
+      <div style="color:var(--grey-light);font-size:14px;font-weight:300;letter-spacing:1px;padding:20px 0;" id="past-loading">Lade Events...</div>
     </div>
-    <button class="accordion-btn" id="past-events-toggle" onclick="togglePastEvents()" style="margin-top:2px;">
+    <button class="accordion-btn" id="past-events-toggle" onclick="togglePastEvents()" style="margin-top:2px;display:none;">
       <span data-i18n="show-more">Show more events</span>
       <span class="accordion-arrow" id="past-events-arrow">▼</span>
     </button>
-  </section>
+  
 
   <!-- CONTACT -->
   <section>
@@ -1112,6 +970,7 @@ var TRANSLATIONS = {
     "cf-send": "Nachricht senden",
     "cf-success": "✓ Nachricht gesendet – wir melden uns!",
     "footer-tag": "Aus Europa · Für die Welt",
+    "nav-home": "HOME",
     "nav-charta": "Charta",
     "nav-impressum": "Impressum",
     "member-founder": "Gründer",
@@ -1163,6 +1022,7 @@ var TRANSLATIONS = {
     "cf-send": "Envoyer le message",
     "cf-success": "✓ Message envoyé – nous reviendrons vers toi !",
     "footer-tag": "D'Europe · Pour le Monde",
+    "nav-home": "ACCUEIL",
     "nav-charta": "Charte",
     "nav-impressum": "Mentions légales",
     "member-founder": "Fondateur",
@@ -1214,6 +1074,7 @@ var TRANSLATIONS = {
     "cf-send": "Send Message",
     "cf-success": "✓ Message sent — we'll be in touch soon!",
     "footer-tag": "From Europe · For the World",
+    "nav-home": "HOME",
     "nav-charta": "Charter",
     "nav-impressum": "Legal Notice",
     "member-founder": "Founder",
@@ -1259,13 +1120,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
   function togglePastEvents() {
-    var more = document.getElementById('past-events-more');
+    var hidden = document.querySelectorAll('#past-grid .past-hidden');
     var arrow = document.getElementById('past-events-arrow');
     var btn = document.getElementById('past-events-toggle');
-    var isOpen = more.style.display === 'flex';
-    more.style.display = isOpen ? 'none' : 'flex';
-    more.style.flexDirection = 'column';
-    more.style.gap = '2px';
+    var isOpen = hidden.length > 0 && hidden[0].style.display !== 'none';
+    hidden.forEach(function(el) { el.style.display = isOpen ? 'none' : 'block'; });
     arrow.classList.toggle('open', !isOpen);
     var textEl = btn.querySelector('[data-i18n]');
     var lang = localStorage.getItem('gdj-lang') || 'en';
@@ -1278,61 +1137,190 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 </script>
 
+
+
 <script>
-// Auto-move expired upcoming events to past events section
-document.addEventListener('DOMContentLoaded', function() {
-  var today = new Date();
-  today.setHours(0, 0, 0, 0);
+(function() {
+  var CSV_URLS = {
+    2026: "https://docs.google.com/spreadsheets/d/e/2PACX-1vShsRGftDvShKKVVN8HzKn275hTw2upVyCNzsbZYn1Ild40X3NMSffyoowve_k_B4gdwvF7567t8cSP/pub?gid=0&single=true&output=csv",
+    2027: "https://docs.google.com/spreadsheets/d/e/2PACX-1vShsRGftDvShKKVVN8HzKn275hTw2upVyCNzsbZYn1Ild40X3NMSffyoowve_k_B4gdwvF7567t8cSP/pub?gid=359447087&single=true&output=csv",
+    2028: "https://docs.google.com/spreadsheets/d/e/2PACX-1vShsRGftDvShKKVVN8HzKn275hTw2upVyCNzsbZYn1Ild40X3NMSffyoowve_k_B4gdwvF7567t8cSP/pub?gid=924638449&single=true&output=csv"
+  };
 
-  var upcomingGrid = document.getElementById('upcoming-grid');
-  var pastGrid = document.getElementById('past-grid');
+  // Load current year + next year so upcoming events from next year also appear
+  var currentYear = new Date().getFullYear();
+  var yearsToLoad = [currentYear];
+  if (CSV_URLS[currentYear + 1]) yearsToLoad.push(currentYear + 1);
 
-  if (!upcomingGrid || !pastGrid) return;
+  // CSV parsing handled by PapaParse
 
-  var eventLinks = upcomingGrid.querySelectorAll('a[data-event-date]');
-
-  eventLinks.forEach(function(link) {
-    var dateStr = link.getAttribute('data-event-date');
-    if (!dateStr) return;
-
-    var eventDate = new Date(dateStr);
-    eventDate.setHours(0, 0, 0, 0);
-
-    if (eventDate < today) {
-      // Build a link-card style element for the past section
-      var title = link.querySelector('.event-title') ? link.querySelector('.event-title').textContent : '';
-      var location = link.querySelector('.event-location') ? link.querySelector('.event-location').textContent : '';
-      var parts = dateStr.split('-');
-      var dateLabel = parts[2] + ' · ' + parts[1] + ' · ' + parts[0];
-
-      var pastCard = document.createElement('a');
-      pastCard.href = link.href;
-      pastCard.target = '_blank';
-      pastCard.innerHTML =
-        '<div class="link-card">' +
-        '  <div class="link-card-icon">📅</div>' +
-        '  <div class="link-card-body">' +
-        '    <div class="link-card-title">' + title + '</div>' +
-        '    <div class="link-card-sub">' + dateLabel + ' · ' + location + '</div>' +
-        '  </div>' +
-        '  <div class="link-card-arrow">→</div>' +
-        '</div>';
-
-      // Insert at top of past-grid
-      pastGrid.insertBefore(pastCard, pastGrid.firstChild);
-
-      // Remove from upcoming
-      link.remove();
+  function parseDate(dateStr) {
+    if (!dateStr) return null;
+    dateStr = dateStr.trim();
+    // Format: "Do., 30. 04 2026" or "Sa., 09. 05 2026"
+    var m = dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\s+(\d{4})/);
+    if (m) return new Date(parseInt(m[3]), parseInt(m[2])-1, parseInt(m[1]));
+    // Format: DD.MM.YYYY
+    if (dateStr.indexOf(".") > -1) {
+      var p = dateStr.split(".");
+      if (p.length >= 3) return new Date(parseInt(p[2]), parseInt(p[1])-1, parseInt(p[0]));
     }
-  });
-
-  // If upcoming grid is empty, show a message
-  var remaining = upcomingGrid.querySelectorAll('a[data-event-date]');
-  var onlineEvents = upcomingGrid.querySelectorAll('a:not([data-event-date])');
-  if (remaining.length === 0 && onlineEvents.length === 0) {
-    upcomingGrid.innerHTML = '<p style="color:var(--grey-light);font-size:14px;font-weight:300;letter-spacing:1px;padding:20px 0;" data-i18n="no-upcoming">No upcoming events at the moment – stay tuned!</p>';
+    // Format: YYYY-MM-DD
+    var d = new Date(dateStr);
+    if (!isNaN(d)) return d;
+    return null;
   }
-});
+
+  function isExpired(dateStr) {
+    var d = parseDate(dateStr);
+    if (!d) return false;
+    var today = new Date(); today.setHours(0,0,0,0);
+    return d < today;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return "";
+    dateStr = dateStr.trim();
+    // Format: "Do., 30. 04 2026" -> "30.04.2026"
+    var m = dateStr.match(/(\d{1,2})\.\s*(\d{1,2})\s+(\d{4})/);
+    if (m) return m[1].padStart(2,"0") + "." + m[2].padStart(2,"0") + "." + m[3];
+    // Already DD.MM.YYYY
+    if (dateStr.indexOf(".") > -1) return dateStr;
+    // YYYY-MM-DD
+    var p = dateStr.split("-");
+    if (p.length === 3) return p[2] + "." + p[1] + "." + p[0];
+    return dateStr;
+  }
+
+  function buildEventCard(row) {
+    var a = document.createElement("a");
+    if (row["Link"]) { a.href = row["Link"]; a.target = "_blank"; }
+    a.innerHTML =
+      '<div class="event-card">' +
+      '<div class="event-date">' + formatDate(row["Datum"]) + '</div>' +
+      '<div class="event-title">' + (row["Event Name"] || "") + '</div>' +
+      '<div class="event-location">' + (row["Ort"] || "") + '</div>' +
+      (row["Bemerkung"] ? '<div class="event-badge upcoming">' + row["Bemerkung"] + '</div>' : '<div class="event-badge upcoming" data-i18n="badge-upcoming">Upcoming</div>') +
+      '</div>';
+    return a;
+  }
+
+  function buildPastCard(row) {
+    var a = document.createElement("a");
+    if (row["Link"]) { a.href = row["Link"]; a.target = "_blank"; }
+    a.innerHTML =
+      '<div class="link-card">' +
+      '<div class="link-card-icon">📅</div>' +
+      '<div class="link-card-body">' +
+      '<div class="link-card-title">' + (row["Event Name"] || "") + '</div>' +
+      '<div class="link-card-sub">' + formatDate(row["Datum"]) + (row["Ort"] ? " · " + row["Ort"] : "") + (row["Bemerkung"] ? " · " + row["Bemerkung"] : "") + '</div>' +
+      '</div>' +
+      '<div class="link-card-arrow">→</div>' +
+      '</div>';
+    return a;
+  }
+
+  function renderEvents(rows) {
+    var upcoming = document.getElementById("upcoming-grid");
+    var past = document.getElementById("past-grid");
+    var toggleBtn = document.getElementById("past-events-toggle");
+    upcoming.innerHTML = "";
+    past.innerHTML = "";
+
+    var upcomingRows = [], pastRows = [];
+
+    rows.forEach(function(row) {
+      if (!row["Event Name"] || !row["Event Name"].trim()) return;
+      if (isExpired(row["Datum"])) {
+        pastRows.push(row);
+      } else {
+        upcomingRows.push(row);
+      }
+    });
+
+    // Sort upcoming by date ascending
+    upcomingRows.sort(function(a,b) {
+      return parseDate(a["Datum"]) - parseDate(b["Datum"]);
+    });
+
+    // Sort past by date descending (newest first)
+    pastRows.sort(function(a,b) {
+      return parseDate(b["Datum"]) - parseDate(a["Datum"]);
+    });
+
+    if (upcomingRows.length === 0) {
+      upcoming.innerHTML = '<p style="color:var(--grey-light);font-size:14px;font-weight:300;letter-spacing:1px;padding:20px 0;grid-column:1/-1;" data-i18n="no-upcoming">No upcoming events – stay tuned!</p>';
+    } else {
+      upcomingRows.forEach(function(row) {
+        upcoming.appendChild(buildEventCard(row));
+      });
+    }
+
+    // Always show Twitch card
+    var twitchCard = document.createElement("a");
+    twitchCard.href = "https://raidpal.com/en/profile/globaldj";
+    twitchCard.target = "_blank";
+    twitchCard.innerHTML =
+      '<div class="event-card">' +
+      '<div class="event-date">Online</div>' +
+      '<div class="event-title">Twitch Upcoming Events</div>' +
+      '<div class="event-location">Live Stream · globaldj</div>' +
+      '<div class="event-badge upcoming" data-i18n="badge-live">Live</div>' +
+      '</div>';
+    upcoming.appendChild(twitchCard);
+
+    // Past: show first 4, rest in accordion
+    pastRows.forEach(function(row, i) {
+      var card = buildPastCard(row);
+      if (i >= 4) {
+        card.style.display = "none";
+        card.classList.add("past-hidden");
+      }
+      past.appendChild(card);
+    });
+
+    if (pastRows.length > 4 && toggleBtn) {
+      toggleBtn.style.display = "flex";
+    }
+
+    // Re-apply i18n
+    var lang = localStorage.getItem("gdj-lang") || "en";
+    if (window.applyLang) applyLang(lang);
+  }
+
+  // Load PapaParse for CORS-safe CSV fetching
+  var script = document.createElement("script");
+  script.src = "https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js";
+  script.onload = function() {
+    var allRows = [];
+    var loaded = 0;
+
+    function onYearLoaded(results) {
+      allRows = allRows.concat(results.data);
+      loaded++;
+      if (loaded === yearsToLoad.length) {
+        renderEvents(allRows);
+      }
+    }
+
+    yearsToLoad.forEach(function(year) {
+      var url = CSV_URLS[year];
+      if (!url) { loaded++; return; }
+      Papa.parse(url, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: onYearLoaded,
+        error: function(err) {
+          console.error("Events konnten nicht geladen werden (Jahr " + year + "):", err);
+          loaded++;
+          if (loaded === yearsToLoad.length) renderEvents(allRows);
+        }
+      });
+    });
+  };
+  document.head.appendChild(script);
+})();
 </script>
 
 </body>
