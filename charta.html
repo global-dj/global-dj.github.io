@@ -1115,18 +1115,37 @@ document.addEventListener('DOMContentLoaded', function() {
     var mix = document.getElementById('join-mix').value.trim();
     var msg = document.getElementById('join-msg').value.trim();
     if (!name || !email || !role) { alert('Please fill in Name, Email and Role.'); return; }
-    var subject = encodeURIComponent('Global DJ Membership Application – ' + name);
-    var body = encodeURIComponent(
-      'Name / DJ Name: ' + name +
-      '\nEmail: ' + email +
-      '\nRole: ' + role +
-      (social ? '\nSocial Media: ' + social : '') +
-      (mix ? '\nMix / Music Link: ' + mix : '') +
-      (msg ? '\n\nMessage:\n' + msg : '') +
-      '\n\n---\nSent via globaldj.ch Join Form'
-    );
-    window.location.href = 'mailto:globaldj.ch@gmail.com?subject=' + subject + '&body=' + body;
-    document.getElementById('joinSuccess').style.display = 'block';
+    var btn = document.getElementById('joinToggle').nextElementSibling.querySelector('.form-submit');
+    btn.disabled = true; btn.textContent = '...';
+    fetch('https://formspree.io/f/xaqrlbka', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Global DJ Mitgliedschafts-Bewerbung – ' + name,
+        name: name, email: email, role: role,
+        social: social || '–', mix: mix || '–',
+        message: msg || '–'
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      btn.disabled = false; btn.textContent = 'Apply Now';
+      if (data.ok) {
+        document.getElementById('joinSuccess').style.display = 'block';
+        document.getElementById('join-name').value = '';
+        document.getElementById('join-email').value = '';
+        document.getElementById('join-role').value = '';
+        document.getElementById('join-social').value = '';
+        document.getElementById('join-mix').value = '';
+        document.getElementById('join-msg').value = '';
+      } else {
+        alert('Fehler beim Senden. Bitte versuche es erneut.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false; btn.textContent = 'Apply Now';
+      alert('Fehler beim Senden. Bitte versuche es erneut.');
+    });
   }
 </script>
 </body>
