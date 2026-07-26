@@ -912,8 +912,8 @@
     var mix = document.getElementById('join-mix').value.trim();
     var msg = document.getElementById('join-msg').value.trim();
     if (!name || !email || !role) { alert('Please fill in Name, Email and Role.'); return; }
-    var btn = document.getElementById('joinToggle').nextElementSibling.querySelector('.form-submit');
-    btn.disabled = true; btn.textContent = '...';
+    var btn = document.getElementById('joinFormWrap').querySelector('.form-submit');
+    if (btn) { btn.disabled = true; btn.textContent = '...'; }
     fetch('https://formspree.io/f/xaqrlbka', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -940,7 +940,7 @@
       }
     })
     .catch(function() {
-      btn.disabled = false; btn.textContent = 'Apply Now';
+      if (btn) { btn.disabled = false; btn.textContent = 'Apply Now'; }
       alert('Fehler beim Senden. Bitte versuche es erneut.');
     });
   }
