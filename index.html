@@ -712,7 +712,7 @@
         <img src="FOTO_SABINE.jpg" alt="Sabine" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="member-avatar" style="display:none;">👤</div>
         <div class="member-name">Sabine</div>
-        <div class="member-role" data-i18n="role-eventmanager">Event Manager</div>
+        <div class="member-role" data-i18n="role-eventmanager">Eventmanagerin</div>
         <div class="member-tag" data-i18n="member-member">Member</div>
       </div>
     </div>
@@ -978,7 +978,7 @@ var TRANSLATIONS = {
     "sub-members": "Mitglieder",
     "sub-artists": "Artists",
     "role-founder": "Gründer · Global DJ",
-    "role-eventmanager": "Event Managerin",
+    "role-eventmanager": "Eventmanagerin",
     "member-artist": "Artist",
     "s03-title": "Vergangene Events",
     "s04-title": "Kontakt",
@@ -1030,7 +1030,7 @@ var TRANSLATIONS = {
     "sub-members": "Membres",
     "sub-artists": "Artists",
     "role-founder": "Fondateur · Global DJ",
-    "role-eventmanager": "Event Manager",
+    "role-eventmanager": "Responsable événements",
     "member-artist": "Artist",
     "s03-title": "Événements Passés",
     "s04-title": "Contact",
@@ -1297,7 +1297,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Always show Twitch card
+    // Always show Twitch card at the TOP
     var twitchCard = document.createElement("a");
     twitchCard.href = "https://raidpal.com/en/profile/globaldj";
     twitchCard.target = "_blank";
@@ -1308,7 +1308,7 @@ document.addEventListener('DOMContentLoaded', function() {
       '<div class="event-location">Live Stream · globaldj</div>' +
       '<div class="event-badge upcoming" data-i18n="badge-live">Live</div>' +
       '</div>';
-    upcoming.appendChild(twitchCard);
+    upcoming.insertBefore(twitchCard, upcoming.firstChild);
 
     // Past: show first 4, rest in accordion
     pastRows.forEach(function(row, i) {
