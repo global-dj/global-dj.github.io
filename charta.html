@@ -2,6 +2,19 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Global DJ">
+  <meta property="og:image" content="https://www.globaldj.ch/og_image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Global DJ – Electronic Music from the Heart of Europe">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.globaldj.ch/og_image.png">
+  <meta property="og:title" content="Global DJ – Mitgliedschafts-Charta">
+  <meta property="og:description" content="Werde Teil von Global DJ – Mitgliedschafts-Charta für DJs und Partner.">
+  <meta property="og:url" content="https://www.globaldj.ch/charta.html">
+  <meta name="description" content="Werde Teil von Global DJ – Mitgliedschafts-Charta für DJs und Partner.">
   <link rel="icon" type="image/png" href="data:image/png;base64,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">
   <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
