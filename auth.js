@@ -222,11 +222,14 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     '<p style="margin-bottom:12px;color:var(--grey-lighter);">Melde dich an, um ' + djName + ' direkt zu schreiben.</p>' +
     '<input id="gdj-auth-email" type="email" placeholder="E-Mail" value="' + gemerkteEmail.replace(/"/g, '&quot;') + '" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
     '<input id="gdj-auth-password" type="password" placeholder="Passwort (min. 6 Zeichen)" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
-    '<button id="gdj-auth-login" class="form-submit" style="display:block;width:50%;min-width:220px;">Anmelden</button>' +
-    '<p style="margin-top:10px;font-size:13px;color:var(--grey-light);">Noch kein Konto? ' +
-    '<a href="#" id="gdj-auth-register" style="text-decoration:underline;">Jetzt registrieren</a></p>' +
-    '<p style="margin:14px 0 4px;font-size:13px;color:var(--grey-light);">oder</p>' +
-    '<button id="gdj-auth-google" style="display:block;width:50%;min-width:220px;padding:14px;font-size:16px;background:#fff;color:#1f1f1f;border:1px solid var(--border);font-family:inherit;cursor:pointer;">Mit Google anmelden</button>' +
+    '<div style="display:flex;gap:10px;flex-wrap:wrap;width:50%;min-width:220px;">' +
+    '<button id="gdj-auth-login" class="form-submit" style="flex:1;min-width:140px;">Anmelden</button>' +
+    '<button id="gdj-auth-register" style="flex:1;min-width:140px;padding:10px;background:transparent;color:var(--white);border:1px solid var(--border);font-family:inherit;cursor:pointer;">Registrieren</button>' +
+    '</div>' +
+    '<p style="margin:16px 0 8px;font-size:13px;color:var(--grey-light);width:50%;min-width:220px;text-align:center;border-top:1px solid var(--border);padding-top:16px;">oder</p>' +
+    '<button id="gdj-auth-google" style="display:flex;align-items:center;justify-content:center;gap:10px;width:50%;min-width:220px;padding:11px 16px;font-size:15px;font-weight:500;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:4px;font-family:Roboto,Arial,sans-serif;cursor:pointer;">' +
+    '<svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.84 2.09-1.8 2.73v2.27h2.92c1.7-1.57 2.68-3.88 2.68-6.64z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.17l-2.92-2.27c-.81.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.71H.96v2.34C2.44 15.98 5.48 18 9 18z"/><path fill="#FBBC05" d="M3.97 10.71c-.18-.54-.28-1.12-.28-1.71s.1-1.17.28-1.71V4.95H.96A8.996 8.996 0 000 9c0 1.45.35 2.83.96 4.05l3.01-2.34z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.59-2.59C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.95l3.01 2.34C4.68 5.16 6.66 3.58 9 3.58z"/></svg>' +
+    'Mit Google anmelden</button>' +
     '<p id="gdj-auth-status" style="margin-top:8px;color:var(--grey-lighter);"></p>';
 
   var statusEl = document.getElementById('gdj-auth-status');
