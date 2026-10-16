@@ -48,6 +48,20 @@ async function gdjSignOut() {
   await client.auth.signOut();
 }
 
+// Login/Registrierung per Google (ein Klick, kein Passwort, keine
+// Bestaetigungs-E-Mail noetig). Leitet zu Google weiter und zurueck auf
+// dieselbe Seite - braucht einmalig Google-Provider-Setup in Supabase
+// (Dashboard: Authentication -> Providers -> Google).
+async function gdjSignInWithGoogle() {
+  var client = gdjInitSupabase();
+  if (!client) throw new Error('Supabase nicht konfiguriert.');
+  var result = await client.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.href }
+  });
+  if (result.error) throw result.error;
+}
+
 // Sendet eine Nachricht an einen DJ. djSlug identifiziert den DJ (z.B.
 // "deejayvax"), nicht den Namen, damit Umbenennungen den Verweis nicht
 // brechen. sender_id wird NICHT mitgeschickt - die Datenbank setzt ihn
@@ -211,6 +225,8 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     '<button id="gdj-auth-login" class="form-submit" style="display:block;width:50%;min-width:220px;">Anmelden</button>' +
     '<p style="margin-top:10px;font-size:13px;color:var(--grey-light);">Noch kein Konto? ' +
     '<a href="#" id="gdj-auth-register" style="text-decoration:underline;">Jetzt registrieren</a></p>' +
+    '<p style="margin:14px 0 4px;font-size:13px;color:var(--grey-light);">oder</p>' +
+    '<button id="gdj-auth-google" style="display:block;width:50%;min-width:220px;padding:10px;background:#fff;color:#1f1f1f;border:1px solid var(--border);font-family:inherit;cursor:pointer;">Mit Google anmelden</button>' +
     '<p id="gdj-auth-status" style="margin-top:8px;color:var(--grey-lighter);"></p>';
 
   var statusEl = document.getElementById('gdj-auth-status');
@@ -252,6 +268,17 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
       document.getElementById('gdj-auth-email').value = '';
       document.getElementById('gdj-auth-password').value = '';
       statusEl.textContent = '✓ Registriert! Bitte E-Mail bestaetigen, dann anmelden.';
+    } catch (err) {
+      statusEl.textContent = 'Fehler: ' + err.message;
+    }
+  });
+
+  document.getElementById('gdj-auth-google').addEventListener('click', async function() {
+    try {
+      await gdjSignInWithGoogle();
+      // Browser leitet sofort zu Google weiter, kein weiterer Code noetig -
+      // nach der Rueckkehr laedt die Seite neu und gdjRenderContactGate()
+      // erkennt den eingeloggten Zustand automatisch.
     } catch (err) {
       statusEl.textContent = 'Fehler: ' + err.message;
     }
