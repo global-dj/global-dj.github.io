@@ -226,7 +226,7 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     '<p style="margin-top:10px;font-size:13px;color:var(--grey-light);">Noch kein Konto? ' +
     '<a href="#" id="gdj-auth-register" style="text-decoration:underline;">Jetzt registrieren</a></p>' +
     '<p style="margin:14px 0 4px;font-size:13px;color:var(--grey-light);">oder</p>' +
-    '<button id="gdj-auth-google" style="display:block;width:50%;min-width:220px;padding:10px;background:#fff;color:#1f1f1f;border:1px solid var(--border);font-family:inherit;cursor:pointer;">Mit Google anmelden</button>' +
+    '<button id="gdj-auth-google" style="display:block;width:50%;min-width:220px;padding:14px;font-size:16px;background:#fff;color:#1f1f1f;border:1px solid var(--border);font-family:inherit;cursor:pointer;">Mit Google anmelden</button>' +
     '<p id="gdj-auth-status" style="margin-top:8px;color:var(--grey-lighter);"></p>';
 
   var statusEl = document.getElementById('gdj-auth-status');
