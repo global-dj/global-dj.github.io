@@ -734,10 +734,21 @@
 
     <!-- Artists -->
     <h3 class="subsection-title" style="margin-top:40px;" data-i18n="sub-artists">Artists</h3>
-    <div class="member-grid">
-      <a href="https://linktr.ee/deejayvax" target="_blank">
+
+    <!-- Genre-Filter: rein clientseitig, kein Server/Supabase noetig.
+         Klick auf einen Genre-Knopf blendet passende Karten ein/aus
+         (gdjFilterGenre(), Skript am Seitenende). -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px;">
+      <button class="genre-btn" data-genre="all" onclick="gdjFilterGenre('all')" style="padding:6px 14px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;">Alle</button>
+      <button class="genre-btn" data-genre="House" onclick="gdjFilterGenre('House')" style="padding:6px 14px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;">House</button>
+      <button class="genre-btn" data-genre="Tech House" onclick="gdjFilterGenre('Tech House')" style="padding:6px 14px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;">Tech House</button>
+      <button class="genre-btn" data-genre="Techno" onclick="gdjFilterGenre('Techno')" style="padding:6px 14px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;">Techno</button>
+      <button class="genre-btn" data-genre="Trance" onclick="gdjFilterGenre('Trance')" style="padding:6px 14px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;">Trance</button>
+    </div>
+
+    <div class="member-grid" id="artist-grid">
+      <a href="dj-deejayvax.html" data-genres="House,Tech House,Techno">
         <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_DEEJAYVAX.jpg" -->
           <img src="FOTO_DEEJAYVAX.jpg" alt="DeeJay Vax" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">DeeJay Vax</div>
@@ -745,9 +756,8 @@
           <div class="member-tag" data-i18n="member-artist">Artist</div>
         </div>
       </a>
-      <a href="https://www.instagram.com/haasi.dj/" target="_blank">
+      <a href="dj-haasi.html" data-genres="House,Trance">
         <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_HAASI.jpg" -->
           <img src="FOTO_HAASI.jpg" alt="DJ Haasi" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">DJ Haasi</div>
@@ -755,9 +765,8 @@
           <div class="member-tag" data-i18n="member-artist">Artist</div>
         </div>
       </a>
-      <a href="https://www.instagram.com/dj.kincaid" target="_blank">
+      <a href="dj-kincaid.html" data-genres="House,Tech House">
         <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_KINCAID.jpg" -->
           <img src="FOTO_KINCAID.jpg" alt="Kincaid" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">Kincaid</div>
@@ -765,9 +774,8 @@
           <div class="member-tag" data-i18n="member-artist">Artist</div>
         </div>
       </a>
-      <a href="https://www.instagram.com/nachtaktiv.techno" target="_blank">
+      <a href="dj-nachtaktiv.html" data-genres="Techno">
         <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_NACHTAKTIV.jpg" -->
           <img src="FOTO_NACHTAKTIV.jpg" alt="Nachtaktiv" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">Nachtaktiv</div>
@@ -775,9 +783,8 @@
           <div class="member-tag" data-i18n="member-artist">Artist</div>
         </div>
       </a>
-      <a href="https://soundcloud.com/djmaxxx68" target="_blank">
+      <a href="dj-maxxx.html" data-genres="Techno">
         <div class="member-card">
-          <!-- PORTRAIT FOTO: ersetze src="FOTO_MAXXX.jpg" -->
           <img src="FOTO_MAXXX.jpg" alt="Maxxx" class="member-avatar" style="object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="member-avatar" style="display:none;">🎧</div>
           <div class="member-name">Maxxx</div>
@@ -1419,5 +1426,23 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
+<script>
+  // Genre-Filter fuer die Artists-Grid (rein clientseitig, siehe Karten
+  // oben mit data-genres="...").
+  function gdjFilterGenre(genre) {
+    document.querySelectorAll('.genre-btn').forEach(function (btn) {
+      var aktiv = btn.getAttribute('data-genre') === genre;
+      btn.style.background = aktiv ? 'var(--white)' : 'var(--grey-mid)';
+      btn.style.color = aktiv ? 'var(--black)' : 'var(--white)';
+    });
+    document.querySelectorAll('#artist-grid > a').forEach(function (card) {
+      var genres = (card.getAttribute('data-genres') || '').split(',');
+      card.style.display = (genre === 'all' || genres.indexOf(genre) !== -1) ? '' : 'none';
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    gdjFilterGenre('all');
+  });
+</script>
 </body>
 </html>
