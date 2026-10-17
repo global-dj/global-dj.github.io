@@ -48,6 +48,27 @@ async function gdjSignOut() {
   await client.auth.signOut();
 }
 
+// Schickt eine Passwort-Reset-Mail (Supabase-Standardversand, gleiche
+// Rate-Limit-Einschraenkung wie die Registrierungs-Bestaetigung). Der Link
+// in der Mail fuehrt zurueck auf dieselbe Seite mit #type=recovery im URL-
+// Fragment - gdjRenderContactGate() erkennt das und zeigt das
+// Neues-Passwort-Formular (siehe renderPasswortSetzenFormular unten).
+async function gdjPasswortVergessen(email) {
+  var client = gdjInitSupabase();
+  if (!client) throw new Error('Supabase nicht konfiguriert.');
+  var result = await client.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + window.location.pathname
+  });
+  if (result.error) throw result.error;
+}
+
+async function gdjSetzeNeuesPasswort(password) {
+  var client = gdjInitSupabase();
+  if (!client) throw new Error('Supabase nicht konfiguriert.');
+  var result = await client.auth.updateUser({ password: password });
+  if (result.error) throw result.error;
+}
+
 // Login/Registrierung per Google (ein Klick, kein Passwort, keine
 // Bestaetigungs-E-Mail noetig). Leitet zu Google weiter und zurueck auf
 // dieselbe Seite - braucht einmalig Google-Provider-Setup in Supabase
@@ -172,6 +193,15 @@ async function gdjRenderKalender(containerId, djSlug) {
 async function gdjRenderContactGate(containerId, djSlug, djName) {
   var container = document.getElementById(containerId);
   if (!container) return;
+
+  // Rueckkehr von einer Passwort-Reset-Mail? Supabase haengt dann
+  // "type=recovery" ins URL-Fragment. Zeigt statt Login/Registrierung das
+  // Neues-Passwort-Formular, unabhaengig vom sonstigen Login-Status.
+  if (window.location.hash.indexOf('type=recovery') !== -1) {
+    renderPasswortSetzenFormular(container, containerId, djSlug, djName);
+    return;
+  }
+
   var user = await gdjGetUser();
 
   if (user) {
@@ -213,8 +243,8 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     return;
   }
 
-  // Nicht eingeloggt: Login/Registrierung anzeigen.
-  // E-Mail aus einem frueheren Besuch vorausfuellen (gleiches Muster wie
+  // Nicht eingeloggt (und kein Passwort-Reset im Gang): Login/Registrierung
+  // anzeigen. E-Mail aus einem frueheren Besuch vorausfuellen (gleiches Muster wie
   // die Sprachauswahl der Seite: localStorage, kein Cookie-Banner noetig,
   // rein funktional, kein Passwort wird gespeichert).
   var gemerkteEmail = localStorage.getItem('gdj-last-email') || '';
@@ -227,7 +257,8 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     '<button id="gdj-tab-register" style="flex:1;padding:10px;border:none;font-family:inherit;cursor:pointer;' + TAB_INAKTIV + '">Registrieren</button>' +
     '</div>' +
     '<input id="gdj-auth-email" type="email" placeholder="E-Mail" value="' + gemerkteEmail.replace(/"/g, '&quot;') + '" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
-    '<input id="gdj-auth-password" type="password" placeholder="Passwort (min. 6 Zeichen)" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
+    '<input id="gdj-auth-password" type="password" placeholder="Passwort (min. 6 Zeichen)" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:4px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
+    '<p id="gdj-auth-forgot" style="margin:0 0 12px;font-size:13px;width:50%;min-width:220px;text-align:right;"><a href="#" id="gdj-auth-forgot-link" style="color:var(--grey-light);text-decoration:underline;">Passwort vergessen?</a></p>' +
     '<button id="gdj-auth-submit" class="form-submit" style="display:block;width:50%;min-width:220px;">Anmelden</button>' +
     '<p style="margin:16px 0 8px;font-size:13px;color:var(--grey-light);width:50%;min-width:220px;text-align:center;border-top:1px solid var(--border);padding-top:16px;">oder</p>' +
     '<button id="gdj-auth-google" style="display:flex;align-items:center;justify-content:center;gap:10px;width:50%;min-width:220px;padding:11px 16px;font-size:15px;font-weight:500;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:4px;font-family:Roboto,Arial,sans-serif;cursor:pointer;">' +
@@ -239,6 +270,7 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
   var tabLogin = document.getElementById('gdj-tab-login');
   var tabRegister = document.getElementById('gdj-tab-register');
   var submitBtn = document.getElementById('gdj-auth-submit');
+  var forgotP = document.getElementById('gdj-auth-forgot');
   var modus = 'login'; // 'login' oder 'register' - steuert nur Beschriftung/Aktion des gemeinsamen Formulars
 
   function setModus(neuerModus) {
@@ -246,10 +278,23 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     tabLogin.style.cssText = tabLogin.style.cssText.replace(/background:[^;]+;color:[^;]+;/, modus === 'login' ? TAB_AKTIV : TAB_INAKTIV);
     tabRegister.style.cssText = tabRegister.style.cssText.replace(/background:[^;]+;color:[^;]+;/, modus === 'register' ? TAB_AKTIV : TAB_INAKTIV);
     submitBtn.textContent = modus === 'login' ? 'Anmelden' : 'Registrieren';
+    forgotP.style.display = modus === 'login' ? 'block' : 'none';
     statusEl.textContent = '';
   }
   tabLogin.addEventListener('click', function () { setModus('login'); });
   tabRegister.addEventListener('click', function () { setModus('register'); });
+
+  document.getElementById('gdj-auth-forgot-link').addEventListener('click', async function (e) {
+    e.preventDefault();
+    var email = document.getElementById('gdj-auth-email').value.trim();
+    if (!email) { statusEl.textContent = 'Bitte zuerst deine E-Mail-Adresse oben eingeben.'; return; }
+    try {
+      await gdjPasswortVergessen(email);
+      statusEl.textContent = '✓ Falls dieses Konto existiert, kommt gleich eine E-Mail mit einem Link zum Zuruecksetzen.';
+    } catch (err) {
+      statusEl.textContent = 'Fehler: ' + err.message;
+    }
+  });
 
   // Enter-Taste im Passwortfeld loest denselben Klick wie der aktive
   // Submit-Knopf aus (click() statt Code-Duplizierung).
@@ -297,6 +342,33 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
       // Browser leitet sofort zu Google weiter, kein weiterer Code noetig -
       // nach der Rueckkehr laedt die Seite neu und gdjRenderContactGate()
       // erkennt den eingeloggten Zustand automatisch.
+    } catch (err) {
+      statusEl.textContent = 'Fehler: ' + err.message;
+    }
+  });
+}
+
+// Formular "Neues Passwort setzen", nur sichtbar wenn der Besucher gerade
+// ueber einen Passwort-Reset-Link zurueckgekommen ist (siehe
+// gdjRenderContactGate oben, Erkennung via #type=recovery im URL-Fragment).
+function renderPasswortSetzenFormular(container, containerId, djSlug, djName) {
+  container.innerHTML =
+    '<p style="margin-bottom:12px;color:var(--grey-lighter);">Neues Passwort setzen</p>' +
+    '<input id="gdj-reset-password" type="password" placeholder="Neues Passwort (min. 6 Zeichen)" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
+    '<button id="gdj-reset-submit" class="form-submit" style="display:block;width:50%;min-width:220px;">Passwort speichern</button>' +
+    '<p id="gdj-reset-status" style="margin-top:8px;color:var(--grey-lighter);"></p>';
+
+  var statusEl = document.getElementById('gdj-reset-status');
+  document.getElementById('gdj-reset-submit').addEventListener('click', async function () {
+    var password = document.getElementById('gdj-reset-password').value;
+    if (password.length < 6) { statusEl.textContent = 'Passwort muss mindestens 6 Zeichen haben.'; return; }
+    try {
+      await gdjSetzeNeuesPasswort(password);
+      statusEl.textContent = '✓ Passwort gespeichert!';
+      // #type=recovery aus der URL entfernen, damit nach dem Neuladen
+      // wieder das normale Login/Nachrichtenformular erscheint.
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+      setTimeout(function () { gdjRenderContactGate(containerId, djSlug, djName); }, 1200);
     } catch (err) {
       statusEl.textContent = 'Fehler: ' + err.message;
     }
