@@ -218,14 +218,17 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
   // die Sprachauswahl der Seite: localStorage, kein Cookie-Banner noetig,
   // rein funktional, kein Passwort wird gespeichert).
   var gemerkteEmail = localStorage.getItem('gdj-last-email') || '';
+  var TAB_AKTIV = 'background:var(--white);color:var(--black);';
+  var TAB_INAKTIV = 'background:transparent;color:var(--grey-lighter);';
   container.innerHTML =
     '<p style="margin-bottom:12px;color:var(--grey-lighter);">Melde dich an, um ' + djName + ' direkt zu schreiben.</p>' +
+    '<div style="display:flex;width:50%;min-width:220px;margin-bottom:16px;border:1px solid var(--border);">' +
+    '<button id="gdj-tab-login" style="flex:1;padding:10px;border:none;font-family:inherit;cursor:pointer;' + TAB_AKTIV + '">Anmelden</button>' +
+    '<button id="gdj-tab-register" style="flex:1;padding:10px;border:none;font-family:inherit;cursor:pointer;' + TAB_INAKTIV + '">Registrieren</button>' +
+    '</div>' +
     '<input id="gdj-auth-email" type="email" placeholder="E-Mail" value="' + gemerkteEmail.replace(/"/g, '&quot;') + '" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
     '<input id="gdj-auth-password" type="password" placeholder="Passwort (min. 6 Zeichen)" style="display:block;width:50%;min-width:220px;padding:10px;margin-bottom:8px;background:var(--grey-mid);border:1px solid var(--border);color:var(--white);font-family:inherit;">' +
-    '<div style="display:flex;gap:10px;flex-wrap:wrap;width:50%;min-width:220px;">' +
-    '<button id="gdj-auth-login" class="form-submit" style="flex:1;min-width:140px;">Anmelden</button>' +
-    '<button id="gdj-auth-register" style="flex:1;min-width:140px;padding:10px;background:transparent;color:var(--white);border:1px solid var(--border);font-family:inherit;cursor:pointer;">Registrieren</button>' +
-    '</div>' +
+    '<button id="gdj-auth-submit" class="form-submit" style="display:block;width:50%;min-width:220px;">Anmelden</button>' +
     '<p style="margin:16px 0 8px;font-size:13px;color:var(--grey-light);width:50%;min-width:220px;text-align:center;border-top:1px solid var(--border);padding-top:16px;">oder</p>' +
     '<button id="gdj-auth-google" style="display:flex;align-items:center;justify-content:center;gap:10px;width:50%;min-width:220px;padding:11px 16px;font-size:15px;font-weight:500;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:4px;font-family:Roboto,Arial,sans-serif;cursor:pointer;">' +
     '<svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.84 2.09-1.8 2.73v2.27h2.92c1.7-1.57 2.68-3.88 2.68-6.64z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.17l-2.92-2.27c-.81.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.71H.96v2.34C2.44 15.98 5.48 18 9 18z"/><path fill="#FBBC05" d="M3.97 10.71c-.18-.54-.28-1.12-.28-1.71s.1-1.17.28-1.71V4.95H.96A8.996 8.996 0 000 9c0 1.45.35 2.83.96 4.05l3.01-2.34z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.59-2.59C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.95l3.01 2.34C4.68 5.16 6.66 3.58 9 3.58z"/></svg>' +
@@ -233,36 +236,48 @@ async function gdjRenderContactGate(containerId, djSlug, djName) {
     '<p id="gdj-auth-status" style="margin-top:8px;color:var(--grey-lighter);"></p>';
 
   var statusEl = document.getElementById('gdj-auth-status');
+  var tabLogin = document.getElementById('gdj-tab-login');
+  var tabRegister = document.getElementById('gdj-tab-register');
+  var submitBtn = document.getElementById('gdj-auth-submit');
+  var modus = 'login'; // 'login' oder 'register' - steuert nur Beschriftung/Aktion des gemeinsamen Formulars
 
-  // Enter-Taste im Passwortfeld loest denselben Klick wie der
-  // "Anmelden"-Knopf aus (click() statt Code-Duplizierung).
+  function setModus(neuerModus) {
+    modus = neuerModus;
+    tabLogin.style.cssText = tabLogin.style.cssText.replace(/background:[^;]+;color:[^;]+;/, modus === 'login' ? TAB_AKTIV : TAB_INAKTIV);
+    tabRegister.style.cssText = tabRegister.style.cssText.replace(/background:[^;]+;color:[^;]+;/, modus === 'register' ? TAB_AKTIV : TAB_INAKTIV);
+    submitBtn.textContent = modus === 'login' ? 'Anmelden' : 'Registrieren';
+    statusEl.textContent = '';
+  }
+  tabLogin.addEventListener('click', function () { setModus('login'); });
+  tabRegister.addEventListener('click', function () { setModus('register'); });
+
+  // Enter-Taste im Passwortfeld loest denselben Klick wie der aktive
+  // Submit-Knopf aus (click() statt Code-Duplizierung).
   document.getElementById('gdj-auth-password').addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      document.getElementById('gdj-auth-login').click();
+      submitBtn.click();
     }
   });
 
-  document.getElementById('gdj-auth-login').addEventListener('click', async function() {
+  submitBtn.addEventListener('click', async function() {
     var email = document.getElementById('gdj-auth-email').value.trim();
     var password = document.getElementById('gdj-auth-password').value;
     if (!email || !password) { statusEl.textContent = 'Bitte E-Mail und Passwort eingeben.'; return; }
     localStorage.setItem('gdj-last-email', email);
-    try {
-      await gdjSignIn(email, password);
-      gdjRenderContactGate(containerId, djSlug, djName);
-    } catch (err) {
-      statusEl.textContent = 'Fehler: ' + err.message;
-    }
-  });
 
-  document.getElementById('gdj-auth-register').addEventListener('click', async function(e) {
-    e.preventDefault();
-    var email = document.getElementById('gdj-auth-email').value.trim();
-    var password = document.getElementById('gdj-auth-password').value;
-    if (!email || !password) { statusEl.textContent = 'Bitte E-Mail und Passwort eingeben.'; return; }
+    if (modus === 'login') {
+      try {
+        await gdjSignIn(email, password);
+        gdjRenderContactGate(containerId, djSlug, djName);
+      } catch (err) {
+        statusEl.textContent = 'Fehler: ' + err.message;
+      }
+      return;
+    }
+
+    // modus === 'register'
     if (password.length < 6) { statusEl.textContent = 'Passwort muss mindestens 6 Zeichen haben.'; return; }
-    localStorage.setItem('gdj-last-email', email);
     try {
       await gdjSignUp(email, password);
       // Felder leeren nach erfolgreicher Registrierung, damit nicht das
